@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>PayGo Credit Report</title>
+		<meta charset="utf-8">
+  		<meta name="viewport" content="width=device-width, initial-scale=1">
+  		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  		<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" type="text/css" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+		<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css" />
+		<script type="text/javascript" src="paygo.js"></script>
+    </head>
+    <body class="index" data-spy="scroll" data-target="#navbar">
+		
+		<div class="jumbotron green-blue_gradient">
+            <div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<img class="ui-kit_logo" src="images/pg_logo-white-800x200.png" width="400px" alt="paygo logo">
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<h2 class="subheader-text">UI Kit</h2>
+					</div>
+				</div>
+            </div>
+        </div>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Colors</h3>
+					</div>
+				</div>
+				<div class="swatches-col">
+					<div class="row">
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-primary">
+									<dt>$primary</dt>
+									<dd>#2ebd59</dd>
+								</dl>
+								<dl class="palette pallette-primary-bright">
+									<dt>$primary-bright</dt>
+									<dd>#1ed760</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-secondary">
+									<dt>$secondary</dt>
+									<dd>#417ed9</dd>
+								</dl>
+								<dl class="palette pallette-secondary-bright">
+									<dt>$secondary-bright</dt>
+									<dd>#3692ff</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-cta">
+									<dt>$cta</dt>
+									<dd>#ff673b</dd>
+								</dl>
+								<dl class="palette pallette-cta-bright">
+									<dt>$cta-bright</dt>
+									<dd>#ff7f43</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-success">
+									<dt>$success</dt>
+									<dd>#18c479</dd>
+								</dl>
+								<dl class="palette pallette-success-bright">
+									<dt>$success-bright</dt>
+									<dd>#13d87a</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-warning">
+									<dt>$warning</dt>
+									<dd>#f6a351</dd>
+								</dl>
+								<dl class="palette pallette-warning-bright">
+									<dt>$warning-bright</dt>
+									<dd>#ffae64</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-danger">
+									<dt>$danger</dt>
+									<dd>#e74c3c</dd>
+								</dl>
+								<dl class="palette pallette-danger-bright">
+									<dt>$danger-bright</dt>
+									<dd>#ff534a</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-info">
+									<dt>$info</dt>
+									<dd>#3498db</dd>
+								</dl>
+								<dl class="palette pallette-info-bright">
+									<dt>$info-bright</dt>
+									<dd>#50daff</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-black">
+									<dt>$black</dt>
+									<dd>#202722</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-darkest-gray">
+									<dt>$darkest-gray</dt>
+									<dd>#6a7a6b</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-dark-gray">
+									<dt>$dark-gray</dt>
+									<dd>#a3afa4</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-gray">
+									<dt>$gray</dt>
+									<dd>#d9ddd9</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-light-gray">
+									<dt>$light-gray</dt>
+									<dd>#f1f1f1</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="col-md-2">
+							<div class="pallete-item">
+								<dl class="palette pallette-lightest-gray">
+									<dt>$lightest-gray</dt>
+									<dd>#fafafa</dd>
+								</dl>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Typography</h3>
+					</div>
+				</div>
+				<div>
+  					<table class="table table-hover">
+						<tr>
+							<th>element</th>
+							<th>laptop size</th>
+							<th>tablet size</th>
+							<th>mobile size</th>
+						</tr>
+						<tr class="type-group h1-row">
+							<td><p class="label-col">h1</p></td>
+							<td><h1 class="bg-screen-col">three em</h1></td>
+							<td><h1 class="mid-screen-col">two.5 em</h1></td>
+							<td><h1 class="sm-screen-col">two em</h1></td>
+						</tr>
+						<tr class="type-group h2-row">
+							<td><p class="label-col">h2</p></td>
+							<td><h2 class="bg-screen-col">two.25 em</h2></td>
+							<td><h2 class="mid-screen-col">two em</h2></td>
+							<td><h2 class="sm-screen-col">one.625 em</h2></td>
+						</tr>
+						<tr class="type-group h3-row">
+							<td><p class="label-col">h3</p></td>
+							<td><h3 class="bg-screen-col">one.75 em</h3></td>
+							<td><h3 class="mid-screen-col">one.5 em</h3></td>
+							<td><h3 class="sm-screen-col">one.375 em</h3></td>
+						</tr>
+						<tr class="type-group h4-row">
+							<td><p class="label-col">h4</p></td>
+							<td><h4 class="bg-screen-col">one.125em</h4></td>
+							<td><h4 class="mid-screen-col">one.125em</h4></td>
+							<td><h4 class="sm-screen-col">one.125em</h4></td>
+						</tr>
+						<tr class="type-group h5-row">
+							<td><p class="label-col">h5</p></td>
+							<td><h5 class="bg-screen-col">one em</h5></td>
+							<td><h5 class="mid-screen-col">one em</h5></td>
+							<td><h5 class="sm-screen-col">one em</h5></td>
+						</tr>
+						<tr class="type-group p-row">
+							<td><p class="label-col">p</p></td>
+							<td><p class="bg-screen-col">one em</p></td>
+							<td><p class="mid-screen-col">one em</p></td>
+							<td><p class="sm-screen-col">one em</p></td>
+						</tr>
+					</table>
+				</div>	
+			</div>
+		</section>
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Buttons</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-primary">.btn-primary</a>
+							<a class="btn btn-block btn-reverse btn-primary-reverse">.btn-primary-reverse</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-cta">.btn-cta</a>
+							<a class="btn btn-block btn-reverse btn-cta-reverse">.btn-cta-reverse</a>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-success">.btn-success</a>
+							<a class="btn btn-block btn-reverse btn-success-reverse">.btn-success-reverse</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-warning">.btn-warning</a>
+							<a class="btn btn-block btn-reverse btn-warning-reverse">.btn-warning-reverse</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-danger">.btn-danger</a>
+							<a class="btn btn-block btn-reverse btn-danger-reverse">.btn-danger-reverse</a>
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="button-example-group">
+							<a class="btn btn-block btn-info">.btn-info</a>
+							<a class="btn btn-block btn-reverse btn-info-reverse">.btn-info-reverse</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Input</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group">
+							<input type="text" value placeholder=".input-default" class="input-default">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group input-error">
+							<input type="text" value placeholder=".input-error" class="input-default input-error">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group input-warning">
+							<input type="text" value placeholder=".input-warning" class="input-default input-warning">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group input-success">
+							<input type="text" value placeholder=".input-success" class="input-default input-success">
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-3">
+						<div class="form-group input-disabled">
+							<input type="text" value placeholder=".input-disabled" disabled="disabled" class="input-default input-disabled">
+						</div>
+					</div>
+					<div class="col-md-3">
+						<div class="form-group input-disabled">
+							<input type="text" value placeholder=".input-disabled" disabled="disabled" class="input-default input-disabled">
+						</div>
+					</div>
+					<div class="input-group-btn">
+						<button type="button" class="btn btn-default dropdown-toggle input-default" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Action 
+							<span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu">
+							<li><a href="#">Action</a></li>
+							<li><a href="#">Another action</a></li>
+							<li><a href="#">Something else here</a></li>
+							<li role="separator" class="divider"></li>
+							<li><a href="#">Separated link</a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3">
+					<h3>Checkboxes</h3>
+					<label class="checkbox" for="checkbox1">
+						<input type="checkbox" value id="checkbox1" data-toggle="checkbox" class="custom-checkbox">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Default
+					</label>
+					<label class="checkbox" for="checkbox2">
+						<input type="checkbox" checked="checked" value id="checkbox2" data-toggle="checkbox" class="custom-checkbox">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Checked
+					</label>
+					<label class="checkbox" for="checkbox3">
+						<input type="checkbox" value id="checkbox3" data-toggle="checkbox" disabled class="custom-checkbox">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Disabled unchecked
+					</label>
+					<label class="checkbox" for="checkbox4">
+						<input type="checkbox" checked="checked" value id="checkbox4" data-toggle="checkbox" disabled class="custom-checkbox">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Disabled checked
+					</label>
+				</div>
+				<div class="col-md-3">
+					<h3>Radio Buttons</h3>
+					<label class="radio">
+						<input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" data-toggle="radio" class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Default
+					</label>
+					<label class="radio">
+						<input type="radio" name="optionsRadios" id="optionsRadios2" value="option1" data-toggle="radio" checked class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Selected
+					</label>
+					<label class="radio">
+						<input type="radio" name="optionsRadiosDisabled" id="optionsRadios3" value="option2" data-toggle="radio" disabled class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Disabled
+					</label>
+					<label class="radio">
+						<input type="radio" name="optionsRadiosDisabled" id="optionsRadios4" value="option2" data-toggle="radio" disabled checked class="custom-radio">
+						<span class="icons">
+							<span class="icon-unchecked"></span>
+							<span class="icon-checked"></span>
+						</span>
+						Disabled selected
+					</label>
+				</div>
+				<div class="col-md-6">
+					<h3>Pagination</h3>
+					<ul class="pagination">
+						<li class="arrow previous">
+							<a href="" class="arrow arrow-left">previous</a>
+						</li>
+						<li class="active"><a href="">1</a></li>
+						<li><a href="">2</a></li>
+						<li><a href="">3</a></li>
+						<li><a href="">4</a></li>
+						<li><a href="">5</a></li>
+						<li><a href="">6</a></li>
+						<li class="arrow next">
+							<a href="" class="arrow-right">next</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Navbar</h3>
+					</div>
+				</div>
+			</div>
+			<nav class="navbar navbar-inverse">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#"><img src="images/pg_logo-whiteGreen-400x100.png" height="25px"></a>
+					</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
+							<li><a href="" data-toggle="modal" data-target="#myModal">Login</a></li>
+							<li><button type="button" class="btn btn-primary">Sign Up</button></li>
+
+						</ul>
+						<ul class="nav navbar-nav navbar-right navmain">
+							<li><a href="#about">About</a></li>
+							<li><a href="#products">Products</a></li>
+							<li><a href="#contact">Contact</a></li>
+						</ul>
+					</div><!--/.navbar-collapse -->
+				</div>
+			</nav>
+			<nav class="navbar navbar-inverse">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#"><img src="images/pg_logo-whiteGreen-400x100.png" height="25px"></a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html#about">About</a></li>
+						<li><a href="index.html#products">Products</a></li>
+						<li><a href="index.html#contact">Contact</a></li>
+						<li class="btn-group">
+							
+							<a href="" class="dropdown-toggle user-name-nav" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fa fa fa-user fa-lg"></i>&nbsp; mdvthomas@gmail.com <span class="caret"></span></a>
+						  <ul class="dropdown-menu" id="dropdown-menu">
+							<li><a href="my-reports.html"><i class="fa fa-folder-open"></i>&nbsp; My Reports</a></li>
+							<li><a href="#"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</a></li>
+							<li><a href="account-settings.html"><i class="fa fa-cog"></i>&nbsp; Account Settings</a></li>
+							<li><a href="index.html" class="divide"><i class="fa fa-sign-out"></i>&nbsp; Log Out</a></li>
+						  </ul>
+						</li>
+					</ul>
+                </div><!--/.navbar-collapse -->
+            </div>
+        </nav>
+		</section>
+		
+		<section class="card-section">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Cards</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-8 card-group">
+							<h2 class="card-head">Main Title</h2>
+							<div class="card-body">
+								<h3>.card-body</h3>
+								<p>This is the card content. Vehicle completes highest leap to date, lands safely. Falcon 9 first stage successfully lands in Atlantic Ocean.</p>
+								<p>Enter your email below and we'll send you a new password.</p>
+								<div class="form-group">
+									<label>Email address</label>
+									<input class="input-default" placeholder="email" type="email">
+								</div>
+								<div class="form-group">
+									<input class="btn btn-primary" type="submit" value="submit">
+									<a href="" class="btn btn-link">cancel</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				<div class="row">
+					<div class="col-mid-12 card-group">
+							<h2 class="card-head">Main Title</h2>
+							<div class="card-body card-table">
+								<h3>.card-table</h3>
+								<table class="table">
+									<thead>
+									  <tr>
+										  <th>Company Name and address</th>
+										  <th>Report Type</th>
+										  <th>Price</th>
+										  <th></th>
+									  </tr>
+									</thead>
+									<tbody>
+									  <tr>
+										<td>
+											<div>
+												<p><strong>Magoosh LLC</strong></p>
+												<p>1385 SHATTUCK AVE APT 305<br>BERKELEY, CA 94709</p>
+											</div>
+										  </td>
+										  <td>
+											<p>Commercial Credit Report Plus</p>
+										  </td>
+										  <td>
+											  <p>$100.00</p>
+										  </td>
+										  <td><a class="btn-remove" href="selectReport.html">&times;</a></td>
+									  </tr>
+										<tr>
+										<td>
+											<div>
+												<p><strong>Magoosh LLC</strong></p>
+												<p>1385 SHATTUCK AVE APT 305<br>BERKELEY, CA 94709</p>
+											</div>
+										  </td>
+										  <td>
+											<p>Commercial Credit Report Plus</p>
+										  </td>
+										  <td>
+											  <p>$100.00</p>
+										  </td>
+										  <td><a class="btn-remove" href="selectReport.html">&times;</a></td>
+									  </tr>
+										<tr>
+										<td>
+											<div>
+												<p><strong>Magoosh LLC</strong></p>
+												<p>1385 SHATTUCK AVE APT 305<br>BERKELEY, CA 94709</p>
+											</div>
+										  </td>
+										  <td>
+											<p>Commercial Credit Report Plus</p>
+										  </td>
+										  <td>
+											  <p>$100.00</p>
+										  </td>
+										  <td><a class="btn-remove" href="selectReport.html">&times;</a></td>
+									  </tr>
+									</tbody>
+								</table>
+							</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Icons</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/main_icons-secure-256x256.png">
+					</div>
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/main_icons-smart-256x256.png">
+					</div>
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/main_icons-speed-256x256.png">
+					</div>
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/step_icons-reviewReport-256x256.png">
+					</div>
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/step_icons-selectBusiness-256x256.png">
+					</div>
+					<div class="col-md-2">
+						<img class="icon-bg" src="images/step_icons-selectReport-256x256.png">
+					</div>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Glyphs</h3>
+					</div>
+				</div>
+				<div class="row">
+				</div>
+			</div>
+		</section>
+		
+		<footer>
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h3>Footer</h3>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<p class="small-copy">Copyright © 2015 PayGo Credit Report</p>
+					</div>
+					<div class="personal-logo">
+						<p class="small-copy right">Website crafted by:</p>
+					</div>
+				</div>
+			</div>
+		</footer>
+		
+		<script>
+			$('body').scrollspy({
+				target: '#navbar',
+				offset: 80
+			})
+		</script>
+		
+	</body>
+</html>
