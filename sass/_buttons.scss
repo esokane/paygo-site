@@ -1,0 +1,147 @@
+a {
+	color: $info;
+	&:hover {color: $info-bright;}
+}
+
+.btn {
+	font-family: 'Helvetica Neue', 'Lato', 'Helvetica', sans-serif;
+	padding: 10px 16px;
+	border-width: 0;
+	-webkit-transition: border .25s linear,color .25s linear,background-color .25s linear 
+		border .25s linear,color .25s linear,background-color .25s linear;
+	transition: border .25s linear,color .25s linear,background-color .25s linear;
+	-webkit-font-smoothing: subpixel-antialiased;
+}
+
+.btn a {
+	font-family: 'Helvetica Neue', 'Lato', 'Helvetica', sans-serif;
+}
+
+.btn-big {
+	padding: 10px 25px;
+}
+
+.btn-reverse {
+	border-width: 1px;
+}
+
+.btn-block {
+	display: block;
+	width: 100%;
+}
+
+.btn-primary {
+	background-color: $primary;
+	&:hover {background-color: $primary-bright;}
+}
+.btn-primary-reverse {
+	background-color: rgba(0,0,0,0);
+	border: 1px solid $primary;
+	color: $primary;
+	&:hover {
+		background-color: $primary;
+		color: white;
+	}
+}
+
+.btn-secondary {
+	background-color: $secondary;
+	&:hover {background-color: $secondary-bright;}
+}
+.btn-secondary-reverse {
+	background-color: rgba(0,0,0,0);
+	border: 1px solid $secondary;
+	color: $secondary;
+	&:hover {
+		background-color: $secondary;
+		color: white;
+	}
+}
+
+.btn-cta {
+	background-color: $cta;
+	color: white;
+	&:hover {
+		background-color: $cta-bright;
+		color: white;
+	}
+}
+.btn-cta-reverse {
+	border-color: $cta;
+	color: $cta;
+	&:hover {
+		background-color: $cta;
+		color: white;
+	}
+}
+
+.btn-success {
+	background-color: $success;
+	color: white;
+	&:hover {background-color: $success-bright;}
+}
+.btn-success-reverse {
+	border-color: $success;
+	color: $success;
+	&:hover {
+		background-color: $success;
+		color: white;
+	}
+}
+
+.btn-warning {
+	background-color: $warning;
+	color: white;
+	&:hover {background-color: $warning-bright;}
+}
+.btn-warning-reverse {
+	border: 1px solid $warning;
+	color: $warning;
+	&:hover {
+		background-color: $warning;
+		color: white;
+	}
+}
+
+.btn-danger {
+	background-color: $danger;
+	color: white;
+	&:hover {background-color: $danger-bright;}
+}
+.btn-danger-reverse {
+	border: 1px solid $danger;
+	color: $danger;
+	&:hover {
+		background-color: $danger;
+		color: white;
+	}
+}
+
+.btn-info {
+	background-color: $info;
+	color: white;
+	&:hover {background-color: $info-bright;}
+}
+.btn-info-reverse {
+	border: 1px solid $info;
+	color: $info;
+	&:hover {
+		background-color: $info;
+		color: white;
+	}
+}
+
+.btn-google {
+	margin: 0 auto;
+	cursor: pointer;
+	height: 48px;
+	width: 193px;
+	background-image:url("../images/btn_google+_signin_dark_normal_web@2x.png");
+	background-size: cover;
+	&:hover {
+		background-image:url("../images/btn_google+_signin_dark_pressed_web@2x.png");
+	}
+	&:focus {
+		background-image:url("../images/btn_google+_signin_dark_focus_web@2x.png");
+	}
+}

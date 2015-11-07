@@ -1,0 +1,86 @@
+/************************** modals **************************/
+
+.modal-body {padding: 40px;}
+
+.modal form {
+	font-family: 'PT Serif', 'Book Antiqua', 'Palatino', serif;
+}
+
+.modal h3 {
+	color: $primary;
+	text-align: center;
+	padding-top: 20px;
+	padding-bottom: 13px;
+}
+
+#login-password-modal {
+	margin-bottom: 7px;
+}
+
+.forgot-password {
+	font-size: .75em;
+}
+
+.modal-header, .modal-footer {
+	border-width: 0px;
+}
+
+.signup-choice {
+	
+	text-align: center;
+	font-size: 24px;
+	color: #B9BCC0;
+	line-height: 70px;
+	height: 70px;
+	position: relative;
+}
+
+.signup-choice:before {
+	right: 0;
+	left: auto;
+}
+
+label {
+	text-align: left;
+    margin-top: 0px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    clear: left;
+    display: block;
+	color: #A1A4AA;
+	font-size: 0.75em;
+}
+
+.registration-header h4, label h4 {
+	font-size: 16px;
+	font-weight: bold;
+	color: $black;
+}
+
+.modal-warning-bar {
+	background-color: $warning;
+	h3 {
+		text-align:center;
+		color: white;
+		margin-top: 0px;
+	}
+}
+
+.modal-radio-button {
+	display: inline-block;
+	margin-left: 30px;
+}
+
+.login-form-radio-label {
+	margin-top: 10px;
+	font-size: 16px;
+	font-weight: normal;
+	color: $black;
+}
+
+.modal-login {
+	float: right;
+	width:200px;
+	display: block;
+}

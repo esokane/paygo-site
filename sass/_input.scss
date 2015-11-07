@@ -1,0 +1,61 @@
+input, .input-default {
+	height: 40px;
+	width: 100%;
+	display: block;
+	padding: 15px 16px;
+	border: 1px solid $gray;
+	border-radius: 3px;
+	box-shadow: none;
+	transition: border .25s linear, color .25s linear, background-color .25s linear;
+}
+
+.input-error {
+	color: $danger;
+	background-color: $danger-brightest;
+	border-color: $danger;
+	box-shadow: none;
+	::-webkit-input-placeholder {color: $danger;}
+	:-moz-placeholder { /* Firefox 18- */color: $danger;}
+	::-moz-placeholder {  /* Firefox 19+ */color: $danger;}
+	:-ms-input-placeholder { color: $danger;}
+}
+
+.input-warning {
+	color: $warning;
+	background-color: $warning-brightest;
+	border-color: $warning;
+	box-shadow: none;
+	::-webkit-input-placeholder {color: $warning;}
+	:-moz-placeholder { /* Firefox 18- */color: $warning;}
+	::-moz-placeholder {  /* Firefox 19+ */color: $warning;}
+	:-ms-input-placeholder { color: $warning;}
+}
+
+.input-success {
+	color: $success;
+	background-color: $success-brightest;
+	border-color: $success;
+	box-shadow: none;
+	::-webkit-input-placeholder {color: $success;}
+	:-moz-placeholder { /* Firefox 18- */color: $success;}
+	::-moz-placeholder {  /* Firefox 19+ */color: $success;}
+	:-ms-input-placeholder { color: $success;}
+}
+
+.input-disabled {
+	color: $disabled;
+	background-color: $disabled-bright;
+	border-color: $disabled;
+	box-shadow: none;
+	::-webkit-input-placeholder {color: $disabled;}
+	:-moz-placeholder { /* Firefox 18- */color: $disabled;}
+	::-moz-placeholder {  /* Firefox 19+ */color: $disabled;}
+	:-ms-input-placeholder { color: $disabled;}
+}
+
+
+/*** checkboxes ***/
+
+.checkbox .icon-checked:before {
+	content: glyphicon glyphicon-film
+}

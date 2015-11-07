@@ -1,0 +1,31 @@
+
+/************************** basic UI elements **************************/
+
+.gray-back {
+	background-color: $light-gray;
+}
+
+.card-group {
+	float: none;
+	margin-left: auto;
+    margin-right: auto;
+	margin-bottom: 20px;
+}
+
+.card-body {
+	background-color: white;
+	padding: 10px 25px 10px 25px;
+	border: 1px solid $card-border;
+	margin-bottom: 30px;
+}
+
+.section-main-header {
+	font-family: 'Helvetica Neue', sans-serif;
+	font-weight: 400;
+	display: block;
+	color: $darkest-gray;
+	margin-bottom: 15px;
+}
+
+
+

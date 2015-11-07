@@ -1,0 +1,29 @@
+/*** pagination ***/
+.pagination {
+	li {
+		a {
+			display: inline-block;
+			color: $primary;
+			border-width: 0px;
+			padding: 10px 20px;
+			border-radius: 3px;
+		}
+	}
+	.active a {
+		background-color: $primary;
+	}
+}
+
+.pagination .arrow a {
+	display: inline-block;
+	border: 1px solid $primary;
+	border-radius: 3px;
+}
+
+.previous a {
+	margin-right: 15px;
+}
+
+.next a{
+	margin-left: 15px;
+}

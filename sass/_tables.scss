@@ -1,0 +1,49 @@
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+  	border-top: 1px solid #e8e8e8;
+  	padding-top: .5em;
+  	padding-bottom: .5em;
+  	vertical-align: middle;
+	font-family: 'PT Serif', 'Book Antiqua', 'Palatino', serif;
+}
+
+.report-option {
+	padding-top: 0px;
+	background-color: white;
+	border-top: 1px solid #e8e8e8;
+	border-left: 1px solid #e8e8e8;
+	border-right: 1px solid #e8e8e8;
+	text-align: center;
+	width: 33%;
+}
+
+.report-option-header {
+	font-family: "helvetica neue", sans-serif;
+  	font-size: 20px;
+  	text-align: center;
+  	color: $primary-color;
+  	padding: .5em;
+}
+
+.report-option-copy {
+  color: #333;
+  font-weight: normal;
+  text-align: left;
+}
+
+.yes {
+  margin: 0 auto;
+  border-radius: 50%;
+  width: 10px;
+  height: 10px;
+  background-color: $success;
+}
+
+.no {
+  	color: $disabled;
+	margin: 0 auto;
+	text-align: center;
+}
+
+.basic, .pro {
+	text-align: center;
+}

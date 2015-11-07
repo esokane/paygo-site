@@ -1,0 +1,39 @@
+.checkout-table {
+	thead tr th {
+		color: $primary;
+		font-family: 'Helvetica Neue', 'Lato', 'Helvetica', sans-serif;
+	}
+	thead {
+		border-bottom: 0px solid white;
+	}
+	.btn {
+		padding: 10px 14px;
+		border-radius: 50%;
+	}
+	tbody tr td {
+		padding-top:30px;
+		padding-bottom:30px;
+		p {
+			font-size: 14px;
+		}
+	}
+}
+
+.cart-sum .btn-cta {
+		display: block;
+		width: 150px;
+		margin: 0 auto;
+		text-align: center;
+	}
+
+.cart-sum .row .col-sm-12.subtotal-group {
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+	border-bottom: 1px solid $gray;
+}
+
+.cart-sum .row .col-sm-12.subtotal-group tr td {padding-bottom: 15px;}
+
+.cart-sum .table>tbody>tr>td, .cart-sum .table>tbody>tr>th, .cart-sum .table>tfoot>tr>td, .cart-sum .table>tfoot>tr>th, .cart-sum .table>thead>tr>td, .cart-sum .table>thead>tr>th, .cart-sum .table > tbody > tr > td, .cart-sum .table > tbody > tr > th, .cart-sum .table > tfoot > tr > td, .cart-sum .table > tfoot > tr > th, .cart-sum .table > thead > tr > td, .cart-sum .table > thead > tr > th {
+	border-width: 0px;
+}
