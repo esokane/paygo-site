@@ -1,0 +1,82 @@
+body, p {
+	font-size: 16px;
+	color: $black;
+}
+
+h1, h2, h3, h4, h5 {font-family: 'Helvetica Neue', 'Lato', 'Helvetica', sans-serif;}
+p, a {font-family: 'PT Serif', 'Book Antiqua', 'Palatino', serif;}
+
+h1 {
+  font-size: 2em;
+  line-height: 1.25;
+}
+@media (min-width: 820px) {
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.125;
+  }
+}
+@media (min-width: 1140px) {
+  h1 {
+    font-size: 3em;
+    line-height: 1.05;
+  }
+}
+
+h2 {
+  font-weight: bold;
+  font-size: 1.625em;
+  line-height: 1.15384615;
+}
+@media (min-width: 820px) {
+  h2 {
+    font-size: 2em;
+    line-height: 1.25;
+  }
+}
+@media (min-width: 1140px) {
+  h2 {
+    font-size: 2.25em;
+    line-height: 1.25;
+  }
+}
+
+h3 {
+  font-weight: bold;
+  font-size: 1.375em;
+  line-height: 1.13636364;
+}
+@media (min-width: 820px) {
+  h3 {
+    font-size: 1.5em;
+    line-height: 1.25;
+  }
+}
+@media (min-width: 1140px) {
+  h3 {
+    font-size: 1.75em;
+    line-height: 1.25;
+  }
+}
+
+h4 {
+	font-weight: bold;
+	font-size: 1.125em;
+  	line-height: 1.11111111;
+}
+@media (min-width: 820px) {
+  h4 {
+    line-height: 1.22222222;
+  }
+}
+
+.pageHeader h2 {
+	text-align: center;
+	color: $primary;
+	font-weight:300;
+}
+
+.saftey-text {
+	font-size: .765em;
+	color: $dark-gray;
+}

@@ -1,0 +1,155 @@
+/************************** search-results.html **************************/
+
+.reportBox-wrapper {
+	font-family: 'PT Serif', 'Book Antiqua', 'Palatino', serif;
+	text-align: center;
+	height: 720px;
+	border: 1px solid #ddd;
+	margin-bottom: 30px;
+}
+
+.reportBox-header {
+	font-family: "helvetica neue", sans-serif;
+	font-size: 20px;
+	padding: 25px 15px 0px 15px;
+	color: $primary;
+	font-weight: bold;
+}
+
+.reportbox-subheader {
+	border-bottom: 1px solid #ddd;
+	.btn {
+		margin-bottom: 15px;
+	}
+}
+
+.reportbox-subheader a {
+	display: block;
+	margin-bottom: 20px;
+}
+
+.reportBox-description {
+	padding: 20px 15px 20px 15px;
+}
+
+.price {
+	font-size: 1.5em;
+	font-weight: bold;
+	margin-bottom: 13px;
+}
+
+.benefits .list {
+	padding: 15px 5px 0 0;
+}
+
+.benefits .list strong {
+	display: block;
+	margin-top: 13px;
+	padding-bottom: 13px;
+}
+
+.benefits a {
+	display: block;
+	text-decoration: none;
+}
+
+.benefits ul {
+	list-style-type: disc;
+	text-align: left;
+	padding-left: 27px;
+}
+
+.benefits li {
+	padding-bottom: 10px;
+}
+
+
+.companySearchResult {
+	border-top: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	padding: 15px 7px 7px 15px;
+}
+
+.companySearchResult:last-child {
+	border-bottom: 1px solid #ddd;
+}
+
+.radio {
+	float:left;
+	margin-left: 20px;
+	margin-bottom: 30px;
+	margin-right: 10px;
+	margin-top: 0;
+}
+
+.radio-selected {
+	background: rgba(24, 196, 121, 0.2);
+	cursor: pointer;
+}
+
+.pageHeader {
+	text-align: center;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.steps {
+	color: $black;
+	padding-bottom: 10px;
+	padding-top: 0;
+	h3 {
+		font-weight:600;
+	}
+}
+
+.resultProductWrapper .btn {
+	border-width: 1px;
+	display:block;
+	margin-top: 15px;
+}
+
+.compare-business a {
+	display: block;
+	margin: 0 auto 40px;
+	width: 350px;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+.modal-header {
+	border-width: 0px;
+	background-color: $primary;
+	h3 {
+		color: white;
+	}
+	.modal-title {
+		color: white;
+	}
+}
+
+#reportBasic .modal-dialog .modal-body {
+	background-image: url("../images/sample-basic.png");
+	background-size: cover;
+	height: 2451px;
+}
+
+#reportPlus .modal-dialog .modal-body {
+	background-image: url("../images/sample-plus.png");
+	background-size: cover;
+	height: 4060px;
+}
+
+.prodSubmit a {
+	margin: 0 0;
+	color: white;
+	text-decoration: none;
+}
+
+.data {
+	font-family: 'PT Serif', 'Book Antiqua', 'Palatino', serif;
+	font-size: 12px;
+	margin-top: 10px;
+	color: $black;
+	padding-bottom: 15px;
+}

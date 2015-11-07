@@ -1,0 +1,26 @@
+/*********************************** reviewOrder.html *******************************/
+
+.welcome-wrap {
+	background-color: $secondary;
+	color: white;
+	padding-top:20px;
+	padding-bottom:20px;
+	text-align: center;
+}
+
+.empty-cart {
+	text-align: center;
+	padding-top: 30px;
+}
+
+#delete-modal {
+	.modal-body {
+		text-align:center;
+	}
+	#btnYes {
+		display:block;
+	}
+	#btnNo {
+		display:block;
+	}
+}

@@ -1,0 +1,125 @@
+// colors //
+.pallete-item {
+	margin-bottom: 20px;
+}
+
+.palette {
+	padding: 15px;
+	font-size: 14px;
+	margin: 0;
+	color: #fff;
+}
+
+.pallette-primary {background-color: $primary;}
+.pallette-primary-bright {background-color: $primary-bright;}
+.pallette-secondary {background-color: $secondary;}
+.pallette-secondary-bright {background-color: $secondary-bright;}
+.pallette-cta {background-color: $cta;}
+.pallette-cta-bright {background-color: $cta-bright;}
+.pallette-success {background-color: $success;}
+.pallette-success-bright {background-color: $success-bright;}
+.pallette-warning {background-color: $warning;}
+.pallette-warning-bright {background-color: $warning-bright;}
+.pallette-danger {background-color: $danger;}
+.pallette-danger-bright {background-color: $danger-bright;}
+.pallette-info {background-color: $info;}
+.pallette-info-bright {background-color: $info-bright;}
+.pallette-black {background-color: $black;}
+.pallette-darkest-gray {background-color: $darkest-gray;}
+.pallette-dark-gray {background-color: $dark-gray;}
+.pallette-gray {background-color: $gray;}
+.pallette-light-gray {background-color: $light-gray;}
+.pallette-lightest-gray {background-color: $lightest-gray;}
+
+// typography //
+
+.type-group {
+}
+
+.label-col {
+	color: $gray;
+}
+
+.h1-row {
+	.bg-screen-col {
+		font-size: 3em;
+		line-height: 1.05;
+	}
+	.mid-screen-col {
+		font-size: 2.5em;
+		line-height: 1.125;
+	}
+	.sm-screen-col {
+		font-size: 2em;
+		line-height: 1.25;
+	}
+}
+
+.h2-row {
+	.bg-screen-col {
+		font-size: 2.25em;
+    	line-height: 1.25;
+	}
+	.mid-screen-col {
+		font-size: 2em;
+    	line-height: 1.25;
+	}
+	.sm-screen-col {
+		font-size: 1.625em;
+  		line-height: 1.15384615;
+	}
+}
+
+.h3-row {
+	.bg-screen-col {
+		font-size: 1.75em;
+    	line-height: 1.25;
+	}
+	.mid-screen-col {
+		font-size: 1.5em;
+    	line-height: 1.25;
+	}
+	.sm-screen-col {
+		font-size: 1.375em;
+  		line-height: 1.13636364;
+	}
+}
+
+.h4-row {
+	.bg-screen-col {
+		font-size: 1.125em;
+    	line-height: 1.22222222;
+	}
+	.mid-screen-col {
+		font-size: 1.125em;
+    	line-height: 1.22222222;
+	}
+	.sm-screen-col {
+		font-size: 1.125em;
+  		line-height: 1.11111111;
+	}
+	
+}
+
+.label-col, .bg-screen-col, .mid-screen-col, .sm-screen-col {
+	display: inline-block;
+	padding: 5px;
+}
+
+.table > thead > tr > th, .table > thead > tr > td, .table > tbody > tr > th, .table > tbody > tr > td, .table > tfoot > tr > th, .table > tfoot > tr > td {
+	vertical-align: middle;
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {vertical-align: middle;}
+
+table td {vertical-align:middle;}
+
+
+/*** buttons ***/
+
+.button-example-group {
+	margin-bottom: 30px;
+	a {
+		margin-bottom: 10px;
+	}
+}

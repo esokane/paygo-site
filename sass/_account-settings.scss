@@ -1,0 +1,38 @@
+/*********************************** account-settings.html *******************************/
+
+.accountSettings .nav-stacked {
+  position: fixed;
+  width: 250px;
+}
+
+.accountSettings .nav-stacked li {
+  color: $black;
+}
+
+.accountSettings .nav-stacked li a {
+  color: $black;
+}
+
+.accountSettings .nav-pills > li.active > a, .accountSettings .nav-pills > li.active > a:focus, .accountSettings .nav-pills > li.active > a:hover {
+  background-color: white;
+  border-left: 3px solid $primary;
+  color: $primary;
+}
+
+.accountSettings .nav-pills > li.active > a, .accountSettings .nav-pills > li.active > a:hover, .accountSettings .nav-pills > li.active > a:focus {
+  background-color: white;
+  border-left: 3px solid $primary;
+  color: $primary;
+}
+
+.accountSettings li > a {
+  background-color: white;
+}
+
+.accountSettings li > a:hover {
+  background-color: white;
+  color: $primary;
+}
+.affix {
+  position: inherit;
+}
