@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+    <import resource="applicationContext_datasource.xml"/>
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <property name="locations" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <bean id="emailSenderBean" class="com.paygo.email.EmailSender">
+        <constructor-arg name="mailSmtpPort" value="${mail.smtp.port}"/>
+        <constructor-arg name="mailSmtpAuth" value="${mail.smtp.auth}"/>
+        <constructor-arg name="mailSmtpStartTlsEnable" value="${mail.smtp.starttls.enable}"/>
+        <constructor-arg name="mailBodyFileName" value="${mail.body.file.name}"/>
+        <property name="senderMail" value="${mail.sender}"/>
+        <property name="senderPass" value="${mail.sender.pass}"/>
+        <property name="subject" value="${mail.subject}"/>
+        <property name="mailBodyContenType" value="${mail.body.content.type}"/>
+    </bean>
+
+    <bean id="reportServiceBean" class="com.paygo.ReportService">
+        <property name="reportWSClient" ref="reportServiceClient"/>
+        <property name="jsonUtils" ref="JSONUtils"/>
+        <property name="accountDao" ref="accountDaoBean"/>
+        <property name="reportDao" ref="reportDaoBean"/>
+        <property name="cartService" ref="cartServiceBean"/>
+        <property name="emailSender" ref="emailSenderBean"/>
+    </bean>
+
+    <bean id="cartServiceBean" class="com.paygo.CartService">
+        <property name="jsonUtils" ref="JSONUtils"/>
+        <property name="reportDao" ref="reportDaoBean"/>
+        <property name="cartDao" ref="cartDaoBean"/>
+    </bean>
+
+    <bean id="accountServiceBean" class="com.paygo.AccountService">
+        <property name="jsonUtils" ref="JSONUtils"/>
+        <property name="accountDao" ref="accountDaoBean"/>
+    </bean>
+
+    <bean id="accountDaoBean" class="com.paygo.dao.mysql.MySqlAccountDao">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="cartDaoBean" class="com.paygo.dao.mysql.MySqlCartDao">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <bean id="JSONUtils" class="com.paygo.utils.JSONUtils"/>
+
+    <bean id="reportServletHandler" class="com.paygo.ReportHttpServletRequestHandler">
+        <property name="reportService" ref="reportServiceBean"/>
+        <property name="cartService" ref="cartServiceBean"/>
+        <property name="accountService" ref="accountServiceBean"/>
+    </bean>
+
+    <bean id="reportServiceClient" class="com.paygo.client.ReportWsClientMock">
+        <property name="wsAccountName" value="${ws.login}"/>
+        <property name="wsPassword" value="${ws.pass}"/>
+        <property name="branch" value="${ws.branch}"/>
+    </bean>
+
+    <bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory">
+        <property name="soapVersion">
+            <util:constant static-field="org.springframework.ws.soap.SoapVersion.SOAP_12"/>
+        </property>
+    </bean>
+
+    <bean id="reportServiceMarshaller" class="org.springframework.oxm.jaxb.Jaxb2Marshaller">
+        <property name="contextPath" value="com.paygocreditreport.paygobackend.ws.reportws"/>
+    </bean>
+
+    <bean id="reportServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+        <constructor-arg ref="messageFactory"/>
+        <property name="marshaller" ref="reportServiceMarshaller"/>
+        <property name="unmarshaller" ref="reportServiceMarshaller"/>
+        <property name="defaultUri" value="http://www.advantagefusion.com/WS/ReportWS.asmx"/>
+    </bean>
+
+    <bean id="reportServiceWSClient" class="com.paygo.client.ReportWsClientImpl">
+        <constructor-arg ref="reportServiceTemplate"/>
+        <property name="wsAccountName" value="${ws.login}"/>
+        <property name="wsPassword" value="${ws.pass}"/>
+        <property name="branch" value="${ws.branch}"/>
+    </bean>
+
+    <bean id="reportDaoBean" class="com.paygo.dao.mysql.MySqlReportDao">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+</beans>

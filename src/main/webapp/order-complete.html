@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PayGo Credit Report</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" type="text/css"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
+          type='text/css'>
+    <link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="javascripts/js.cookie.js"></script>
+    <script type="text/javascript" src="javascripts/paygo_account.js"></script>
+    <script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
+    <script type="text/javascript" src="javascripts/paygo_order_complete.js"></script>
+    <script type="text/javascript" src="javascripts/jsrender.min.js"></script>
+</head>
+<body data-spy="scroll" data-target="#navbar">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                    aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <div class="navbar-brand"><a href="index.html">Pay go credit report</a></div>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="btn-group">
+                    <a href="" class="dropdown-toggle user-name-nav" data-toggle="dropdown" aria-haspopup="true"
+                       aria-expanded="false"><i class="fa fa fa-user fa-lg"></i>&nbsp;
+                        <span id="dropdownMenuUserEmail">empty</span>
+                        <span class="caret"></span></a>
+                    <ul class="dropdown-menu" id="dropdown-menu">
+                        <li><a href="my-reports.html"><i class="fa fa-folder-open"></i>&nbsp; My Reports</a></li>
+                        <li><a href="reviewOrder.html"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</a></li>
+                        <li><a href="account-settings.html"><i class="fa fa-cog"></i>&nbsp; Account Settings</a>
+                        </li>
+                        <li><a href="#" id="dropdownMenuUserLogOut" class="divide"><i
+                                class="fa fa-sign-out"></i>&nbsp; Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right navmain">
+                <li><a href="/index.html#about">About</a></li>
+                <li><a href="/index.html#products">Products</a></li>
+                <li><a href="/index.html#contact">Contact</a></li>
+            </ul>
+        </div>
+        <!--/.navbar-collapse -->
+    </div>
+</nav>
+<div class="gray-back">
+    <div class="container order-complete">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <br>
+                <br>
+
+                <div class="card-body thank-you">
+                    <h1>Thank you for your order.</h1>
+
+                    <p>You will recieve an email containing your receipt shortly to <span
+                            id="sendToUserEmail">empty</span>.</p>
+                </div>
+            </div>
+        </div>
+        <div class="row" id="pdfRow">
+            <div href="">
+                <script id="PDFs" type="text/x-jsrender">
+			                {{for response}}
+			                	<div class="col-sm-3">
+				            	     <a href="">
+					        	          <div class="col-md-12 report-preview" id = {{:guid}} ></div>
+                                           <div class=" col-md-12 report-preview-filler" ></div>
+                                           						<div class="col-md-12 card-body">
+							<div class="report-company">
+								<h5 class="report-company-name">{{:company.company}} {{:guid}}</h5>
+								<p class="report-company-address">{{:company.address}}, {{:company.state}} {{:company.zip}} </p>
+								<p class="report-type">Credit Report Plus</p>
+							</div>
+						</div>
+                                           <a href="javascript:window.location='/reportServlet/download?guid={{:guid}}'"class="btn btn-lg btn-success">
+                                           Download your report &nbsp;<i
+                                           class="fa fa-cloud-download fa-lg"></i></a>
+                                     </a>
+                                </div>
+	                        {{/for}}
+                </script>
+        </div>
+    </div>
+</div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <p class="small-copy">Copyright © 2015 PayGo Credit Report</p>
+            </div>
+            <div class="col-md-4 col-md-offset-4 personal-logo">
+                <p class="small-copy">Website crafted by:&nbsp;&nbsp;<a href="http://markthomas.co"
+                                                                        alt="mark thomas designer artist"><img
+                        src="images/personal-logo.png" width="60px"></a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>

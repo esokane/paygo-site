@@ -1,0 +1,482 @@
+<html>
+<head>
+	<title>PayGo Credit Report</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css" type="text/css"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
+	      type='text/css'>
+	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
+	<script type="text/javascript" src="javascripts/paygo_account.js"></script>
+	<script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
+	<script type="text/javascript" src="javascripts/js.cookie.js"></script>
+	<script type="text/javascript" src="javascripts/paygo_search-results.js"></script>
+	<script type="text/javascript" src="javascripts/jsrender.min.js"></script>
+</head>
+<body data-spy="scroll" data-target="#navbar">
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+				        aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="navbar-brand"><a href="index.html">Pay go credit report</a></div>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="" data-toggle="modal" data-target="#myModal" id = "loginButton">Login</a></li>
+					<li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse" id="signUpButton">Sign Up</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id = "dropdownBlock">
+					<li class="btn-group">
+						<a href="" class="dropdown-toggle user-name-nav" data-toggle="dropdown" aria-haspopup="true"
+						   aria-expanded="false"><i class="fa fa fa-user fa-lg"></i>&nbsp;
+							<span id="dropdownMenuUserEmail">empty</span>
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu" id="dropdown-menu">
+							<li><a href="my-reports.html"><i class="fa fa-folder-open"></i>&nbsp; My Reports</a></li>
+							<li><a href="reviewOrder.html"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</a></li>
+							<li><a href="account-settings.html"><i class="fa fa-cog"></i>&nbsp; Account Settings</a>
+							</li>
+							<li><a href="#" id="dropdownMenuUserLogOut" class="divide"><i
+									class="fa fa-sign-out"></i>&nbsp; Log Out</a></li>
+						</ul>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right navmain">
+					<li><a href="/index.html#about">About</a></li>
+					<li><a href="/index.html#products">Products</a></li>
+					<li><a href="/index.html#contact">Contact</a></li>
+				</ul>
+			</div>
+			<!--/.navbar-collapse -->
+		</div>
+	</nav>
+	<div class="gray-back">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12 pageHeader">
+					<h2>Get Your Business Credit Report in Minutes.</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12 col-md-12 col-lg-4 step1">
+					<div class="resultProductWrapper card-body">
+						<div class="steps">
+							<h3>1. Select a business</h3>
+						</div>
+						<div class="companySearchSummary section-main-header"></div>
+						<!-- example of a search result -->
+						<div class="resultsDisplayWrapper"></div>
+						<script id="ALL" type="text/x-jsrender">
+		                {{for response}}
+                        <div class="companySearchResult wrapper{{if selected}} radio-selected{{/if}}">
+                            <label for="select{{:companyId}}">
+                                <input class="col-xs-2" id="select{{:companyId}}" type="radio" value="{{:companyId}}" name="switch-company">
+                                <div class="data">
+                                    <strong>
+                                        <span class="companyName">{{:company}}</span>
+                                    </strong>
+                                    <br>
+                                    <span class="companyAddress">{{:address}}</span>
+                                    <br>
+									<span class="companyCity">{{:city}}</span>
+                                    <input type="hidden" name="state" value="{{:state}}">
+                                    <input type="hidden" name="zip" value="{{:zip}}">
+                                    <input type="hidden" name="phone" value="{{:phone}}">
+                                    <input type="hidden" name="companyDuns" value="{{:companyDuns}}">
+                                </div>
+                            </label>
+                        </div>
+                        {{/for}}
+
+
+						</script>
+						<a class="btn btn-info-reverse" href="index.html" id="search_again"><i
+							class="fa fa-long-arrow-left"></i>&nbsp; Search Again</a>
+					</div>
+				</div>
+				<div class="col-sm-12 col-md-12 col-lg-8 step2">
+					<div class="alert alert-warning collapse" visible="hide" role="alert" id="alertNotFound">
+						<h4>Refine search</h4>
+
+						<p> <span class="text-color-red">No matches found at that location</span>
+						</p>
+
+						<p>Adding complete address information when searching can provide better results.</p>
+					</div>
+					<div class="selectReport-wrapper card-body">
+						<div class="steps">
+							<h3>2. Select your report</h3>
+						</div>
+						<div class="section-main-header">
+							<div class="selected"></div>
+						</div>
+						<div class="row">
+							<div class="col-sm-6 box">
+								<div class="reportBox-wrapper">
+									<div class="reportBox-header">Basic Report</div>
+									<div class="reportBox-subheader">
+										<div class="reportBox-description">A snapshot to help you quickly determine the
+											creditworthiness of the company.
+										</div>
+										<div class="price reportBox-one"><span>$29.00</span></div>
+										<button type="submit" class="prodSubmit btn btn-cta" value="Add to Cart"
+										        data-price="45">
+											Add to Cart &nbsp;<i class="fa fa-long-arrow-right"></i>
+										</button>
+										<a class="viewSample" href="" href="" data-toggle="modal"
+										   data-target="#reportBasic"><i class="fa fa-eye"></i>&nbsp; View Sample Report</a>
+									</div>
+									<div class="benefits">
+										<div class="list">
+											<strong>What's Included:</strong>
+											<ul>
+												<li>Business registration</li>
+												<li>Suggested credit limit</li>
+												<li>Collections payment and filing information</li>
+												<li>Experian Credit Score</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-6 box">
+								<div class="reportBox-wrapper">
+									<div class="reportBox-header">Plus Report</div>
+									<div class="reportBox-subheader">
+										<div class="reportBox-description">A detailed report to help you assess risk and
+											verify financial stability.
+										</div>
+										<div class="price reportBox-two"><span>$49.00</span></div>
+										<button type="submit" class="prodSubmit btn btn-cta" value="Add to Cart"
+										        data-price="64">
+											Add to Cart &nbsp;<i class="fa fa-long-arrow-right"></i>
+										</button>
+										<a class="viewSample" href="" data-toggle="modal" data-target="#reportPlus"><i
+											class="fa fa-eye"></i>&nbsp;View Sample Report</a>
+									</div>
+									<div class="benefits">
+										<div class="list">
+											<strong>What's Included:</strong>
+											<ul>
+												<li>Detailed listings of registration info</li>
+												<li>Suggested credit limit</li>
+												<li>Collections payment and filing information</li>
+												<li>Trade and payment trends</li>
+												<li>Full UCC filings with liens and judgments</li>
+												<li>Demographic data</li>
+												<li>Edgar financials</li>
+												<li>Experian Credit Score</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-sm-12">
+								<div class="compare-business">
+									<a class="btn btn-primary" href="/index.html#products">
+										<i class="fa fa-balance-scale"></i>&nbsp; Compare Business Credit Reports
+									</a>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Report Basic -->
+			<div class="modal fade" id="reportBasic" role="dialog" aria-labelledby="myModalLabelBasic">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h3 class="modal-title" id="myModalLabelBasic">Basic Report Sample</h3>
+						</div>
+						<div class="modal-body"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Report Plus -->
+			<div class="modal fade in" id="reportPlus" role="dialog" aria-labelledby="myModalLabelPlus">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h3 class="modal-title" id="myModalLabelPlus">Plus Report Sample</h3>
+						</div>
+						<div class="modal-body"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Log In -->
+			<div class="modal fade in" id="myModal" role="dialog" aria-labelledby="myModalLabelLogIn">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h3 class="modal-title" id="myModalLabelLogIn">Login</h3>
+						</div>
+						<div class="modal-body">
+							<div class="btn-google"></div>
+							<div class="signup-choice">or</div>
+							<form class="logIn-form" role="form">
+								<div class=" form-group">
+									<label for="login-email-modal">Email Address</label>
+									<input class="input-default" id="login-email-modal" type="email"
+									       placeholder="name@domain.com" autocomplete="off">
+
+									<div class="error-message-container">
+										<div id="login-email-modal-not-valid" class="error-message"
+										     style="display:none">
+											Oops, looks like that’s not a valid email.
+										</div>
+								</div>
+									<br>
+									<label for="login-password-modal">Password</label>
+									<input class="input-default" id="login-password-modal" type="password"
+									       placeholder="Password" autocomplete="off">
+
+									<p class="footnote forgot-password"><a href="/forgot_password.html">Forgot your
+										password?</a></p>
+								</div>
+							</form>
+						</div>
+						<div class="modal-footer">
+							<button class="btn btn-primary" type="submit" id="login-submit-modal"><i
+								class="fa fa-lock"></i>&nbsp;
+								Log In
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- Log In / Sign Up -->
+			<div class="modal fade in" id="loginBlock" role="dialog" aria-labelledby="myModalLabelOrder">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header modal-warning-bar">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h3 class="modal-title" id="myModalLabelOrder">Please log in to continue</h3>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-12">
+									<div class="btn-google"></div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="signup-choice">or</div>
+							</div>
+							<div class="row">
+								<form class="logIn-form" role="form">
+									<div class="col-md-12 form-group">
+										<div class="row row-modal">
+											<div class="col-md-12"><label for="login-email-modal"><h4>Please enter your
+												email address:</h4></label></div>
+											<br>
+											<br>
+											<input class="col-md-12 input-default" id="login-email-order" type="email"
+											       placeholder="name@domain.com" autocomplete="off">
+										</div>
+										<div class="error-message-container">
+											<div id="login-email-order-not-valid" class="error-message"
+											     style="display:none">
+												Oops, looks like that’s not a valid email.
+											</div>
+										</div>
+										<div class="row">
+											<div class="col-md-12">
+												<label for="login-password-order">
+													<h4>Do you have a PayGo.com password?</h4>
+												</label>
+											</div>
+											<div class="col-md-12 modal-radio-group"><!-- switch login registration-->
+												<div class="row row-modal">
+													<div class="col-sm-1 col-sm-offset-1">
+														<input type="radio" name="switch-reg" id="show-login"
+														       checked="checked">
+													</div>
+													<div class="col-xs-10">
+														<label for="show-login" class="login-form-radio-label">
+															Yes, I have a password.
+														</label>
+													</div>
+												</div>
+												<div class="row row-modal">
+													<div class="col-sm-1 col-sm-offset-1">
+														<input type="radio" name="switch-reg" id="show-registration">
+													</div>
+													<div class="col-xs-10"><label for="show-registration"
+													                              class="login-form-radio-label">No, I'm a
+														new customer.</label></div>
+												</div>
+											</div>
+										</div>
+										<div class="row modal-row">
+											<div class="col-sm-12">
+												<div id="login-form-container">
+													<div class="col-sm-12">
+														<input class="input-default" id="login-password-order"
+														       type="password" placeholder="Password"
+														       autocomplete="off">
+
+														<div class="col-sm-10">
+															<p class="footnote forgot-password">
+																<a href="/forgot_password.html">
+																	Forgot your password?
+																</a>
+															</p>
+														</div>
+													</div>
+													<div class="col-sm-12">
+														<a class="btn btn-primary modal-login" type="submit"
+														   id="login-submit-order">&nbsp; Log In</a>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div id="registration-form-container-order" style="display: none;">
+								<div class="registration-header">
+                                <span><h4>Please complete the following required fields to complete
+	                                registration.</h4></span>
+								</div>
+								<form id="registration-form-order" name="registration-form" method="post" action="">
+									<input type="hidden" name="registration-form" value="registration-form">
+									<input id="username-secret-order" type="hidden" name="username_secret">
+
+									<div class="register-input-field">
+										<label for="first-name">First Name*:</label>
+										<input class="input-default" id="first-name-order" type="text" name="first-name"
+										       placeholder="John">
+									</div>
+									<div class="register-input-field">
+										<label for="last-name">Last Name*:</label>
+										<input class="input-default" id="last-name-order" type="text" name="last_name"
+										       placeholder="Doe">
+									</div>
+									<div class="register-input-field">
+										<div class="register-input">
+											<label for="register-password-order">Password*:</label>
+											<input class="input-default" id="register-password-order" type="password"
+											       name="register-password" autocomplete="off" placeholder="Password">
+										</div>
+									</div>
+									<div class="register-input-field">
+										<div>
+											<label for="retype-password-order">
+												Retype Password*:</label>
+											<input class="input-default" id="retype-password-order" type="password"
+											       name="retype_password" autocomplete="off"
+											       placeholder="Retype Password">
+										</div>
+									</div>
+								</form>
+								<a class="btn btn-primary modal-login" name="registration-submit" type="submit"
+								   id="register-submit-order"><i class="fa fa-lock"></i>&nbsp; Register</a>
+							</div>
+						</div>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+			<!-- Sign Up -->
+			<div class="modal fade in" id="signUp" role="dialog" aria-labelledby="myModalLabelSignUp">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">×</span>
+							</button>
+							<h3 class="modal-title" id="myModalLabelSignUp">Sign Up</h3>
+						</div>
+						<div class="modal-body">
+							<div class="btn-google"></div>
+							<div class="signup-choice">or</div>
+							<div id="registration-form-container">
+								<div class="registration-header">
+                                <span><h4>Please complete the following required fields to complete
+	                                registration.</h4></span>
+								</div>
+								<form id="registration-form" name="registration-form" method="post" action="">
+									<input type="hidden" name="registration-form" value="registration-form">
+									<input id="username-secret" type="hidden" name="username_secret">
+
+									<div class="register-input-field">
+										<label for="register-email-modal">Email Address*:</label>
+										<input class="input-default" id="register-email-modal" type="email"
+										       placeholder="name@domain.com" autocomplete="off">
+									</div>
+									<div class="register-input-field">
+										<label for="register-first-name-modal">First Name*:</label>
+										<input class="input-default" id="register-first-name-modal" type="text" name="first-name"
+										       placeholder="John">
+									</div>
+									<div class="register-input-field">
+										<label for="register-last-name-modal">Last Name*:</label>
+										<input class="input-default" id="register-last-name-modal" type="text" name="last_name"
+										       placeholder="Doe">
+									</div>
+									<div class="register-input-field">
+										<div class="register-input">
+											<label for="register-password-modal">Password*:</label>
+											<input class="input-default" id="register-password-modal" type="password"
+											       name="register-password" autocomplete="off" placeholder="Password">
+										</div>
+									</div>
+									<div class="register-input-field">
+										<div>
+											<label for="register-retype-password-modal">
+												Retype Password*:</label>
+											<input class="input-default" id="register-retype-password-modal" type="password"
+											       name="retype_password" autocomplete="off"
+											       placeholder="Retype Password">
+										</div>
+									</div>
+								</form>
+								<button class="btn btn-primary modal-login" name="registration-submit" type="submit"
+								        id="register-submit-modal"><i class="fa fa-lock"></i>&nbsp; Register
+								</button>
+							</div>
+						</div>
+						<div class="modal-footer"></div>
+					</div>
+				</div>
+			</div>
+			<footer>
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<p class="small-copy">Copyright © 2015 PayGo Credit Report</p>
+						</div>
+						<div class="col-md-4 col-md-offset-4 personal-logo">
+							<p class="small-copy">Website crafted by:&nbsp;&nbsp;<a href="http://markthomas.co"
+							                                                        alt="mark thomas designer artist"><img
+								src="images/personal-logo.png" width="60px"></a></p>
+						</div>
+					</div>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

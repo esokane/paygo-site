@@ -1,0 +1,29 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header/>
+    <SOAP-ENV:Body>
+        <ns3:USASearch xmlns:ns3="http://www.advantagefusion.com/WS/ReportWS"
+                       xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <ns3:_request>
+                <ns3:TestMode>false</ns3:TestMode>
+                <ns3:CustomerId>0</ns3:CustomerId>
+                <ns3:Company>Facebook</ns3:Company>
+                <ns3:City/>
+                <ns3:State>CA</ns3:State>
+                <ns3:Subject>
+                    <ns3:DOB>2015-12-28T15:33:09.297+03:00</ns3:DOB>
+                </ns3:Subject>
+                <ns3:Subject2>
+                    <ns3:DOB>2015-12-28T15:33:09.297+03:00</ns3:DOB>
+                </ns3:Subject2>
+                <ns3:Subject3>
+                    <ns3:DOB>2015-12-28T15:33:09.297+03:00</ns3:DOB>
+                </ns3:Subject3>
+                <ns3:Subject4>
+                    <ns3:DOB>2015-12-28T15:33:09.297+03:00</ns3:DOB>
+                </ns3:Subject4>
+                <ns3:PermissiblePurpose>None</ns3:PermissiblePurpose>
+                <ns3:ReportId>0</ns3:ReportId>
+            </ns3:_request>
+        </ns3:USASearch>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

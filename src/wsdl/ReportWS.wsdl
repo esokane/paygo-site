@@ -1,0 +1,771 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://www.advantagefusion.com/WS/ReportWS" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" targetNamespace="http://www.advantagefusion.com/WS/ReportWS" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://www.advantagefusion.com/WS/ReportWS">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CreateAccount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:CreateAccountRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreateAccountRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="UserFirstName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserLastName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserTitle" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserPhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserEmail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="UserPassword" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserHasSignedWebAgreement" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="UserHasSignedInternationalPricingAgreement" type="s:boolean" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyAddress2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyZip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyCountry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyPhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyPhone2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyFax" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyContactName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyContactEmail" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingAddress2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingZip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingCountry" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingPhone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingPhone2" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingFax" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingContactName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyBillingContactEmail" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WSRequest">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ParentAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ParentAccountPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSAccountName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSPassword" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branch" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TestMode" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSUserId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CustomerId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="WSParentUserId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CreateAccountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CreateAccountResult" type="tns:CreateAccountResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CreateAccountResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse" />
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="WSResponse">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReferenceId" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletionCode" type="tns:CompletionCodeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ErrorDescription" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InternalErrorDescription" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CompletionCodeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="UNKNOWN" />
+          <s:enumeration value="SUCCESS" />
+          <s:enumeration value="ERROR" />
+          <s:enumeration value="NO_RECORDS_FOUND" />
+          <s:enumeration value="SELECT_COMPANY_TICKER" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="USASearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:USASearchRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USASearchRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="DBA" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="TaxId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject2" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject3" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject4" type="tns:USASearchSubject" />
+              <s:element minOccurs="1" maxOccurs="1" name="PermissiblePurpose" type="tns:PermissiblePurposeEnum" />
+              <s:element minOccurs="0" maxOccurs="1" name="EndUser" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="USASearchSubject">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MiddleName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suffix" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SSN" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="DOB" type="s:dateTime" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="PermissiblePurposeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="None" />
+          <s:enumeration value="CreditReportsForBusinessTransactions" />
+          <s:enumeration value="EmploymentScreening" />
+          <s:enumeration value="TenantScreening" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="USASearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="USASearchResult" type="tns:USASearchResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="USASearchResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SearchId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Companies" type="tns:ArrayOfUSACompanyInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfUSACompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="USACompanyInfo" nillable="true" type="tns:USACompanyInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="USACompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BusinessName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetAddress" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NumberOfTradeLines" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="LocationType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PublicRecordDataIndicator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CollectionIndicator" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UCCIndicator" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ConfidenceCode" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CanadaSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:CanadaSearchRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CanadaSearchRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CivicNumber" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="CanadaSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CanadaSearchResult" type="tns:CanadaSearchResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="CanadaSearchResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SearchId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Companies" type="tns:ArrayOfCanadaCompanyInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCanadaCompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CanadaCompanyInfo" nillable="true" type="tns:CanadaCompanyInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CanadaCompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Province" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="IntlSearch">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:IntlSearchRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IntlSearchRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="MatchType" type="tns:GraydonMatchTypeEnum" />
+              <s:element minOccurs="0" maxOccurs="1" name="Input" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="GraydonMatchTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="Identifier" />
+          <s:enumeration value="Keyword" />
+          <s:enumeration value="Name" />
+          <s:enumeration value="PostCode" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="IntlSearchResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="IntlSearchResult" type="tns:IntlSearchResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="IntlSearchResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="SearchId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Companies" type="tns:ArrayOfIntlCompanyInfo" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfIntlCompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntlCompanyInfo" nillable="true" type="tns:IntlCompanyInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntlCompanyInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Building" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="County" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetIntlReportProducts">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:GetIntlReportProductsRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetIntlReportProductsRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportId" type="s:int" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:element name="GetIntlReportProductsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIntlReportProductsResult" type="tns:GetIntlReportProductsResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetIntlReportProductsResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="Products" type="tns:ArrayOfIntlReportProduct" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfIntlReportProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="IntlReportProduct" nillable="true" type="tns:IntlReportProduct" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="IntlReportProduct">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ReportName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductIdent" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mime1" type="tns:MimeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mime2" type="tns:MimeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mime3" type="tns:MimeType" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mime4" type="tns:MimeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="MimeType">
+        <s:restriction base="s:string">
+          <s:enumeration value="HTML" />
+          <s:enumeration value="XML" />
+          <s:enumeration value="PDF" />
+          <s:enumeration value="DOC" />
+          <s:enumeration value="NONE" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="OrderReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:OrderReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderReportRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="Stage" type="tns:StageEnum" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyId" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyAddress" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyCity" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyState" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyZip" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyCountry" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="IncludeUCCFilings" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="SearchId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReportNotes" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject2" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject3" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="Subject4" type="tns:USASearchSubject" />
+              <s:element minOccurs="0" maxOccurs="1" name="TickerSelection" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompaniesDS">
+                <s:complexType>
+                  <s:sequence>
+                    <s:element ref="s:schema" />
+                    <s:any />
+                  </s:sequence>
+                </s:complexType>
+              </s:element>
+              <s:element minOccurs="0" maxOccurs="1" name="CreditCardInfo" type="tns:PaymentInfo" />
+              <s:element minOccurs="0" maxOccurs="1" name="Product" type="tns:IntlReportProductSelection" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="StageEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="BEGINNING" />
+          <s:enumeration value="SELECT_TICKER" />
+          <s:enumeration value="SKIP_TICKER" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PaymentInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="State" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Zip" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CardType" type="tns:CreditCardTypeEnum" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardExpirationMonth" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CardExpirationYear" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="CreditCardTypeEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="VISA" />
+          <s:enumeration value="MASTERCARD" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="IntlReportProductSelection">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductIdent" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Speed" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Level" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mime" type="tns:MimeType" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="OrderReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="OrderReportResult" type="tns:OrderReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="OrderReportResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="RequestId" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportId" type="s:int" />
+              <s:element minOccurs="0" maxOccurs="1" name="ReportName" type="s:string" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportDate" type="s:dateTime" />
+              <s:element minOccurs="0" maxOccurs="1" name="CompanyTickers" type="tns:ArrayOfCompanyTicker" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:complexType name="ArrayOfCompanyTicker">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CompanyTicker" nillable="true" type="tns:CompanyTicker" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CompanyTicker">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CompanyName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Address" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Ticker" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="GetReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="_request" type="tns:GetReportRequest" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetReportRequest">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSRequest">
+            <s:sequence>
+              <s:element minOccurs="1" maxOccurs="1" name="RequestId" type="s:int" />
+              <s:element minOccurs="1" maxOccurs="1" name="BlackAndWhite" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="AllUCCs" type="s:boolean" />
+              <s:element minOccurs="1" maxOccurs="1" name="ReportFormat" type="tns:ReportFormatEnum" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+      <s:simpleType name="ReportFormatEnum">
+        <s:restriction base="s:string">
+          <s:enumeration value="HTML" />
+          <s:enumeration value="PDF" />
+          <s:enumeration value="XML" />
+        </s:restriction>
+      </s:simpleType>
+      <s:element name="GetReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetReportResult" type="tns:GetReportResponse" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="GetReportResponse">
+        <s:complexContent mixed="false">
+          <s:extension base="tns:WSResponse">
+            <s:sequence>
+              <s:element minOccurs="0" maxOccurs="1" name="PDF" type="s:base64Binary" />
+              <s:element minOccurs="0" maxOccurs="1" name="HTML" type="s:string" />
+              <s:element minOccurs="0" maxOccurs="1" name="XML" type="s:string" />
+            </s:sequence>
+          </s:extension>
+        </s:complexContent>
+      </s:complexType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSoapIn">
+    <wsdl:part name="parameters" element="tns:CreateAccount" />
+  </wsdl:message>
+  <wsdl:message name="CreateAccountSoapOut">
+    <wsdl:part name="parameters" element="tns:CreateAccountResponse" />
+  </wsdl:message>
+  <wsdl:message name="USASearchSoapIn">
+    <wsdl:part name="parameters" element="tns:USASearch" />
+  </wsdl:message>
+  <wsdl:message name="USASearchSoapOut">
+    <wsdl:part name="parameters" element="tns:USASearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanadaSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:CanadaSearch" />
+  </wsdl:message>
+  <wsdl:message name="CanadaSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:CanadaSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="IntlSearchSoapIn">
+    <wsdl:part name="parameters" element="tns:IntlSearch" />
+  </wsdl:message>
+  <wsdl:message name="IntlSearchSoapOut">
+    <wsdl:part name="parameters" element="tns:IntlSearchResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIntlReportProductsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIntlReportProducts" />
+  </wsdl:message>
+  <wsdl:message name="GetIntlReportProductsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIntlReportProductsResponse" />
+  </wsdl:message>
+  <wsdl:message name="OrderReportSoapIn">
+    <wsdl:part name="parameters" element="tns:OrderReport" />
+  </wsdl:message>
+  <wsdl:message name="OrderReportSoapOut">
+    <wsdl:part name="parameters" element="tns:OrderReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetReportSoapIn">
+    <wsdl:part name="parameters" element="tns:GetReport" />
+  </wsdl:message>
+  <wsdl:message name="GetReportSoapOut">
+    <wsdl:part name="parameters" element="tns:GetReportResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ReportWSSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <wsdl:input message="tns:CreateAccountSoapIn" />
+      <wsdl:output message="tns:CreateAccountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="USASearch">
+      <wsdl:input message="tns:USASearchSoapIn" />
+      <wsdl:output message="tns:USASearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanadaSearch">
+      <wsdl:input message="tns:CanadaSearchSoapIn" />
+      <wsdl:output message="tns:CanadaSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="IntlSearch">
+      <wsdl:input message="tns:IntlSearchSoapIn" />
+      <wsdl:output message="tns:IntlSearchSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIntlReportProducts">
+      <wsdl:input message="tns:GetIntlReportProductsSoapIn" />
+      <wsdl:output message="tns:GetIntlReportProductsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="OrderReport">
+      <wsdl:input message="tns:OrderReportSoapIn" />
+      <wsdl:output message="tns:OrderReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <wsdl:input message="tns:GetReportSoapIn" />
+      <wsdl:output message="tns:GetReportSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ReportWSSoap" type="tns:ReportWSSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="USASearch">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/USASearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanadaSearch">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/CanadaSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IntlSearch">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/IntlSearch" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntlReportProducts">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/GetIntlReportProducts" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderReport">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/OrderReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/GetReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ReportWSSoap12" type="tns:ReportWSSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CreateAccount">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/CreateAccount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="USASearch">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/USASearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanadaSearch">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/CanadaSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="IntlSearch">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/IntlSearch" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIntlReportProducts">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/GetIntlReportProducts" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="OrderReport">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/OrderReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetReport">
+      <soap12:operation soapAction="http://www.advantagefusion.com/WS/ReportWS/GetReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ReportWS">
+    <wsdl:port name="ReportWSSoap" binding="tns:ReportWSSoap">
+      <soap:address location="http://www.advantagefusion.com/WS/ReportWS.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ReportWSSoap12" binding="tns:ReportWSSoap12">
+      <soap12:address location="http://www.advantagefusion.com/WS/ReportWS.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
