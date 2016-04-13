@@ -23,14 +23,14 @@ public class ReportWsClientMock implements ReportWsClient {
         usaSearchResult.setSearchId("1");
         usaSearchResult.setCompletionCode(CompletionCodeEnum.SUCCESS);
         USACompanyInfo comp = new USACompanyInfo();
-        comp.setStreetAddress("Lenin st.");
+        comp.setStreetAddress("Main st.");
         comp.setBusinessName("Facebook");
         comp.setCity("San Diego");
         comp.setCompanyId("1");
         comp.setState("CA");
         comp.setZip("545321");
         USACompanyInfo comp1 = new USACompanyInfo();
-        comp1.setStreetAddress("Marks st.");
+        comp1.setStreetAddress("15th av.");
         comp1.setBusinessName("FacebookLTD");
         comp1.setCity("San Diego");
         comp1.setCompanyId("2");
