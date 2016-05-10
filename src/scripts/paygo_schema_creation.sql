@@ -34,8 +34,9 @@ CREATE TABLE `addresses` (
   `phone` varchar(45) DEFAULT NULL,
   `street2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `cards`
@@ -54,8 +55,9 @@ CREATE TABLE `cards` (
   `card_exp_year` int(11) DEFAULT NULL,
   `security_code` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `cart`
@@ -82,8 +84,10 @@ CREATE TABLE `cart` (
   KEY `FK_reporttypes_cart_idx` (`report_type_id`),
   CONSTRAINT `FK_reporttypes_cart` FOREIGN KEY (`report_type_id`) REFERENCES `reporttypes` (`report_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_users_cart` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=68 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=76 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+
 
 --
 -- Table structure for table `databasechangeloglock`
@@ -136,8 +140,9 @@ CREATE TABLE `reports` (
   KEY `FK_reporttypes_reports_idx` (`report_type_id`),
   CONSTRAINT `FK_reporttypes_reports` FOREIGN KEY (`report_type_id`) REFERENCES `reporttypes` (`report_type_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `FK_users_reports` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=124 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=127 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `reporttypes`
@@ -181,17 +186,37 @@ CREATE TABLE `ticker` (
   PRIMARY KEY (`ticker_id`),
   KEY `FK_cart_entry_id_idx` (`cart_entry_id`),
   CONSTRAINT `FK_cart_entry_id` FOREIGN KEY (`cart_entry_id`) REFERENCES `cart` (`cart_entry_id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8 COMMENT='cart_entry may have a list of company to choose by user. Used in OrderReport websevice.';
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='cart_entry may have a list of company to choose by user. Used in OrderReport websevice.';
 /*!40101 SET character_set_client = @saved_cs_client */;
 
+
+
 --
--- Dumping data for table `ticker`
+-- Table structure for table `transactions`
 --
 
-LOCK TABLES `ticker` WRITE;
-/*!40000 ALTER TABLE `ticker` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ticker` ENABLE KEYS */;
-UNLOCK TABLES;
+DROP TABLE IF EXISTS `transactions`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `transactions` (
+  `transaction_id` int(11) NOT NULL AUTO_INCREMENT,
+  `trans_tag` varchar(45) DEFAULT NULL COMMENT 'field from payeeze gateway',
+  `trans_id_external` varchar(45) DEFAULT NULL COMMENT 'field from payeeze gateway',
+  `trans_type` varchar(45) DEFAULT NULL,
+  `user_id` varchar(45) DEFAULT NULL,
+  `amount` int(11) DEFAULT NULL COMMENT 'amount of money in transaction in cents',
+  `currency` int(11) DEFAULT NULL COMMENT '1 - USD',
+  `trans_status` varchar(45) DEFAULT NULL,
+  `validation_status` varchar(45) DEFAULT NULL,
+  `bank_resp_code` varchar(45) DEFAULT NULL,
+  `bank_message` varchar(45) DEFAULT NULL,
+  `gateway_resp_code` varchar(45) DEFAULT NULL,
+  `gateway_message` varchar(255) DEFAULT NULL,
+  `correlation_id` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`transaction_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
 
 --
 -- Table structure for table `users`
@@ -205,11 +230,13 @@ CREATE TABLE `users` (
   `login` varchar(255) NOT NULL,
   `first_name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
-  `pass` varchar(130) NOT NULL,
+  `pass` varchar(130) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `login_UNIQUE` (`login`)
-) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+-
 
 --
 -- Table structure for table `users_addresses`
@@ -227,9 +254,8 @@ CREATE TABLE `users_addresses` (
   KEY `frk_address_idx` (`address_id`),
   CONSTRAINT `frk_address` FOREIGN KEY (`address_id`) REFERENCES `addresses` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `frk_user` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
 
 --
 -- Table structure for table `users_cards`
@@ -247,7 +273,7 @@ CREATE TABLE `users_cards` (
   KEY `frk_card_idx` (`card_id`),
   CONSTRAINT `frk_card` FOREIGN KEY (`card_id`) REFERENCES `cards` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION,
   CONSTRAINT `frk_users_cards` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +292,7 @@ DELIMITER ;;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION' */ ;;
 /*!50003 SET @saved_time_zone      = @@time_zone */ ;;
 /*!50003 SET time_zone             = 'SYSTEM' */ ;;
-/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `empty_cart` ON SCHEDULE EVERY 2 DAY STARTS '2016-03-21 16:56:05' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
+/*!50106 CREATE*/ /*!50117 DEFINER=`root`@`localhost`*/ /*!50106 EVENT `empty_cart` ON SCHEDULE EVERY 2 DAY STARTS '2016-03-21 17:56:05' ON COMPLETION NOT PRESERVE ENABLE DO BEGIN
 
   DECLARE userId int default -1;
   DECLARE maxCreated timestamp;
@@ -541,4 +567,4 @@ DELIMITER ;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-03-21 17:18:49
+

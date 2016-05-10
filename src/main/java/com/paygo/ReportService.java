@@ -24,6 +24,9 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
+
+
 
 /**
  * class for report operations
@@ -36,7 +39,13 @@ public class ReportService {
     private AccountDao accountDao;
     private ReportDao reportDao;
     private CartService cartService;
-    private  EmailSender emailSender;
+    private EmailSender emailSender;
+    private PaymentService paymentService;
+
+    public void setPaymentService(PaymentService paymentService) {
+        this.paymentService = paymentService;
+    }
+
 
     public void setEmailSender(EmailSender emailSender) {
         this.emailSender = emailSender;
@@ -171,6 +180,10 @@ public class ReportService {
         List<ReportCartItem> cart = cartService.getCart(user);
         try {
             User userJSON = jsonUtils.processJSON2Object(incomeRequest.getInputStream(), User.class);
+            if (!cartsCompare(cart, userJSON.getReports())) {
+                logger.error("Cart from DB is not equal website cart");
+                return ServiceConstants.CARTS_NOT_EQUAL_JSON_ERROR;
+            }
             fillUser(user, userJSON);
         } catch (IOException e) {
             logger.error("Failed to obtain input stream from request", e);
@@ -192,7 +205,7 @@ public class ReportService {
         List<ReportCartItem> tickerList = new ArrayList<>();
         try {
             // todo: processing payment card method
-            payment();
+         //   paymentService.payment(user, cart);
             for (ReportCartItem reportCartItem : cart) {
                 /*fill the request for the order report web service */
                 OrderReportRequest request = fillOrderReportRequest(reportCartItem);
@@ -242,6 +255,23 @@ public class ReportService {
             }
         }
         return result;
+    }
+
+    /**
+     * comparing carts from DB and website to avoid charging client
+     * if in different browser were added more in a cart
+     *
+     * @param cart    - cart from DB
+     * @param reports - cart from website
+     * @return
+     */
+    private boolean cartsCompare(List<ReportCartItem> cart, List<Report> reports) {
+        if (cart.size() != reports.size()) {
+            return false;
+        }
+        List<Integer> dbSearchIDs = cart.stream().map((c) -> c.getSearchId()).collect(Collectors.toList());
+        List<Integer> cartSearchIDs = reports.stream().map((c) -> c.getSearchId()).collect(Collectors.toList());
+        return dbSearchIDs.equals(cartSearchIDs);
     }
 
 

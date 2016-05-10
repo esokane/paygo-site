@@ -3,6 +3,7 @@ $(function () {
     Account = {
         // URL
         requestURL: '/reportServlet/createAccount',
+        googleSignInURL: '/reportServlet/googleSignIn',
         userData: {},
         // authorization
         logIn: function (opt) {
@@ -34,6 +35,19 @@ $(function () {
                     firstName: opt.firstName,
                     lastName: opt.lastName,
                     password: opt.password
+                }),
+                complete: opt.complete
+            });
+        },
+        googleSignIn: function (opt) {
+            $.ajax({
+                url: Account.googleSignInURL,
+                method: 'POST',
+                contentType: 'application/json',
+                dataType: 'json',
+                processData: false,
+                data: JSON.stringify({
+                    idToken: opt.id_token,
                 }),
                 complete: opt.complete
             });

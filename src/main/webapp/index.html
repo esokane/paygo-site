@@ -11,11 +11,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
 	      type='text/css'>
+	<script src="https://apis.google.com/js/platform.js" defer></script>
 	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="javascripts/js.cookie.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_account.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_index.js"></script>
+	<script type="text/javascript" src="javascripts/googleSignIn.js" defer></script>
+	<meta name="google-signin-client_id" content="1098810344021-180ph8hjq149pcb7l690o3pt9d2fg022.apps.googleusercontent.com">
 </head>
 <body class="index" data-spy="scroll" data-target="#navbar">
 	<nav class="navbar navbar-inverse navbar-fixed-top nav-index nav-transition">
@@ -464,9 +467,10 @@
 					<h3 class="modal-title" id="myModalLabel">Login</h3>
 				</div>
 				<div class="modal-body">
-					<div class="btn-google"></div>
+					<!--<div class="g-signin2" data-onsuccess="onSignIn"></div>-->
+					<div class="btn-google" id="btn-google"></div>
 					<div class="signup-choice">or</div>
-					<form class="logIn-form" role="form">
+					<form class="logIn-form" role="form" id="logIn-form">
 						<div class=" form-group">
 							<label for="login-email-modal">Email Address</label>
 							<input class="input-default" id="login-email-modal" type="email"
@@ -528,8 +532,9 @@
 					</button>
 					<h3 class="modal-title" id="myModalLabel">Sign Up</h3>
 				</div>
+
 				<div class="modal-body">
-					<div class="btn-google"></div>
+					<div class="btn-google" type="button" id="btn-google-sign"></div>
 					<div class="signup-choice">or</div>
 					<div id="registration-form-container">
 						<div class="registration-header">

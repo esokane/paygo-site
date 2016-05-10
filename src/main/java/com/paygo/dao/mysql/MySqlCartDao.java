@@ -5,6 +5,7 @@ import com.paygo.dao.mappers.ReportCartItemMapper;
 import com.paygo.domain.CompanyTicker;
 import com.paygo.domain.Report;
 import com.paygo.domain.ReportCartItem;
+import com.paygo.domain.Transaction;
 import com.paygo.domain.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -52,6 +53,15 @@ public class MySqlCartDao extends NamedParameterJdbcDaoSupport implements CartDa
 
     public final static String INSERT_TICKER = "INSERT INTO ticker (cart_entry_id, ticker, company_name, company_address) " +
             "VALUES (?, ?, ?, ?)";
+
+    public final static String INSERT_TRANSACTION = "INSERT INTO transactions \n" +
+            " (trans_tag, trans_id_external, trans_type, user_id, amount, currency, trans_status,\n" +
+            " validation_status, bank_resp_code, bank_message, gateway_resp_code, gateway_message,\n" +
+            " correlation_id)\n " +
+            " VALUES(:trans_tag, :trans_id_external, :trans_type, :user_id, :amount, :currency, " +
+            " :trans_status, :validation_status, :bank_resp_code, :bank_message," +
+            " :gateway_resp_code, :gateway_message, :correlation_id) ";
+
 
     public final static String GET_CART_ITEM_BY_TICKER = "select DISTINCT c.cart_entry_id, " +
             "user_id,\n" +
@@ -176,6 +186,34 @@ public class MySqlCartDao extends NamedParameterJdbcDaoSupport implements CartDa
             throw e;
         }
         logger.debug("updateCart -> ended. [{}] rows deleted", affected);
+        return affected;
+    }
+
+    @Override
+    public int saveTransaction(Transaction transaction, User user) throws Exception {
+        logger.debug("saveTransaction({}) -> started");
+        HashMap<String, String> params = new HashMap<>();
+        params.put("trans_id_external", transaction.getTransactionIdExternal());
+        params.put("trans_type", transaction.getTransactionType());
+        params.put("user_id", String.valueOf(user.getUserId()));
+        params.put("amount", String.valueOf(transaction.getAmount()));
+        params.put("currency", String.valueOf(transaction.getCurrency().getValue()));
+        params.put("trans_status", transaction.getTransactionStatus());
+        params.put("validation_status", transaction.getValidationStatus());
+        params.put("bank_resp_code", transaction.getBankResponseCode());
+        params.put("bank_message", transaction.getBankMessage());
+        params.put("gateway_resp_code", transaction.getGatewayResponseCode());
+        params.put("gateway_message", transaction.getGatewayMessage());
+        params.put("correlation_id", transaction.getCorrelationID());
+        params.put("trans_tag", transaction.getTransactionTag());
+        int affected = 0;
+        try {
+            affected = getNamedParameterJdbcTemplate().update(INSERT_TRANSACTION, params);
+        } catch (Exception e) {
+            logger.error("Error occurred while saving transaction", e);
+            throw e;
+        }
+        logger.debug("saveTransaction -> ended. [{}] rows inserted", affected);
         return affected;
     }
 

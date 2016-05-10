@@ -7,6 +7,7 @@ import org.slf4j.LoggerFactory;
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import java.beans.ConstructorProperties;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -33,6 +34,7 @@ public class EmailSender {
     private String subject;
     private String mailBodyContenType;
 
+    @ConstructorProperties({"mailSmtpPort", "mailSmtpAuth","mailSmtpStartTlsEnable", "mailBodyFileName"})
     public EmailSender(String mailSmtpPort, String mailSmtpAuth, String mailSmtpStartTlsEnable, String mailBodyFileName) {
         mailServerProperties.put("mail.smtp.port", mailSmtpPort);
         mailServerProperties.put("mail.smtp.auth", mailSmtpAuth);

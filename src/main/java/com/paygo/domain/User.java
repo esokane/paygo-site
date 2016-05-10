@@ -20,6 +20,7 @@ public class User {
     private String newPassConfirm;
     private Card card;
     private Address address;
+    private String idToken;
     /*bought reports */
     private List<Report> reports = new ArrayList<>();
 
@@ -29,6 +30,14 @@ public class User {
 
     public void setReports(List<Report> reports) {
         this.reports = reports;
+    }
+
+    public String getIdToken() {
+        return idToken;
+    }
+
+    public void setIdToken(String idToken) {
+        this.idToken = idToken;
     }
 
     public Card getCard() {

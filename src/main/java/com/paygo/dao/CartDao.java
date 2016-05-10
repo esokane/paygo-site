@@ -3,6 +3,7 @@ package com.paygo.dao;
 import com.paygo.domain.CompanyTicker;
 import com.paygo.domain.Report;
 import com.paygo.domain.ReportCartItem;
+import com.paygo.domain.Transaction;
 import com.paygo.domain.User;
 
 import java.util.List;
@@ -71,5 +72,8 @@ public interface CartDao {
      * @return
      */
     int updateCart(String requestId, int cartEntryId)  throws Exception ;
+
+
+    int saveTransaction(Transaction transaction, User user) throws Exception;
 
 }

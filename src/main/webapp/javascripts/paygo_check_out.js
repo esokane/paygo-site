@@ -15,7 +15,6 @@ $(document).ready(function () {
             }
             if (Account.userData.card) {
                 $('#firstName').val(Account.userData.card.firstName);
-                $('#lastName').val(Account.userData.card.lastName);
                 $('#cardNumber').val(Account.userData.card.cardNumber);
                 $('#expireMM').val(Account.userData.card.expireMM);
                 $('#expireYY').val(Account.userData.card.expireYY);
@@ -23,6 +22,7 @@ $(document).ready(function () {
         }
     });
 
+    $('#someHiddenDiv').hide();
 
     $('#submit-payment').click(function () {
         var phone2 = "";
@@ -30,6 +30,7 @@ $(document).ready(function () {
         {
             phone2 = Account.userData.address.phone
         }
+
         var formData = {
             address: {
                 street1: $('#street1').val(),
@@ -42,12 +43,12 @@ $(document).ready(function () {
             },
             card: {
                 firstName: $('#firstName').val(),
-                lastName: $('#lastName').val(),
                 cardNumber: $('#cardNumber').val(),
                 expireMM: $('#expireMM').val(),
                 expireYY: $('#expireYY').val(),
                 cvv: $('#cvv').val()
-            }
+            },
+            reports: Account.userData.reports
         };
         if (
             formData.address.street1
@@ -175,6 +176,7 @@ $(document).ready(function () {
             }),
             success: function (response) {
                 var json = response;
+                Account.userData.reports = json;
                 $('#subtotal-items').html(json.length);
                 var total = 0;
                 json.forEach(function (v) {

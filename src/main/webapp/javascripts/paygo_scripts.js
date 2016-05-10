@@ -15,8 +15,32 @@ $(document).ready(function () {
         }
     });
 
-    // button "Register" event onClick
-    $('#register-submit-modal').click(function () {
+    // add submit handlers on login/register button and on enter
+    $("#login-submit-modal").click(login_submit_handler);
+    $("form#logIn-form :input").each(function () {
+        var input = $(this); // This is the jquery object of the input
+        input.keydown(function (event) {
+            if (event.keyCode == 13) {
+                login_submit_handler(event);
+            }
+        });
+    });
+
+    $("#register-submit-modal").click(register_submit_handler);
+    $("form#registration-form :input").each(function () {
+        var input = $(this); // This is the jquery object of the input
+        input.keydown(function (event) {
+            if (event.keyCode == 13) {
+                register_submit_handler(event);
+            }
+        });
+    });
+
+
+
+// submit on button "Register" and on enter
+    function register_submit_handler(event) {
+        event.preventDefault();
         var email = $('#register-email-modal').val(),
             firstName = $('#register-first-name-modal').val(),
             lastName = $('#register-last-name-modal').val(),
@@ -24,7 +48,7 @@ $(document).ready(function () {
             retypePassword = $('#register-retype-password-modal').val();
         // form validation
         if (email.match(/^[\w\-\.]+@[\w\-\.]+\.\w+$/) && firstName && lastName && password && password === retypePassword) {
-            // user signig up
+            // user signing up
             Account.signUp({
                 email: email,
                 firstName: firstName,
@@ -45,16 +69,17 @@ $(document).ready(function () {
             alert('Please enter all fields');
         }
         return true;
-    });
+    }
 
 
-    // button "Log In" event OnClick
-    $('#login-submit-modal').click(function () {
+// submit on button "Login" and on enter
+    function login_submit_handler(event) {
+        event.preventDefault();
         var email = $('#login-email-modal').val(),
             password = $('#login-password-modal').val();
         // if email and password exist
         if (email.match(/^[\w\-\.]+@[\w\-\.]+\.\w+$/) && password) {
-            // Авторизуем пользователя
+            // user authorizing
             Account.logIn({
                 email: email,
                 password: password,
@@ -73,8 +98,9 @@ $(document).ready(function () {
             alert('Please enter all fields');
         }
         return false;
-    });
-});
+    }
+})
+;
 
 $(document).ajaxError(function (event, request, settings, exception) {
     var message;

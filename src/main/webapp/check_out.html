@@ -17,6 +17,7 @@
     <script type="text/javascript" src="javascripts/paygo_account.js"></script>
     <script type="text/javascript" src="javascripts/paygo_check_out.js"></script>
     <script type="text/javascript" src="javascripts/jsrender.min.js"></script>
+    <script type="text/javascript" src="javascripts/payeezy_us_v5.1.js"></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
 <nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,12 +33,13 @@
             <div class="navbar-brand"><a href="index.html">Pay go credit report</a></div>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right" >
+            <ul class="nav navbar-nav navbar-right">
                 <li><a href="" data-toggle="modal" data-target="#myModal" id="loginButton">Login</a></li>
-                <li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse" id="signUpButton">Sign Up</a>
+                <li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse"
+                       id="signUpButton">Sign Up</a>
                 </li>
             </ul>
-            <ul class="nav navbar-nav navbar-right" id = "dropdownBlock">
+            <ul class="nav navbar-nav navbar-right" id="dropdownBlock">
                 <li class="btn-group">
                     <a href="" class="dropdown-toggle user-name-nav" data-toggle="dropdown" aria-haspopup="true"
                        aria-expanded="false"><i class="fa fa fa-user fa-lg"></i>&nbsp;
@@ -68,6 +70,8 @@
             <div class="col-md-12 pageHeader">
                 <h2>Check Out</h2>
             </div>
+            <div id="someHiddenDiv" style="display: none; color: red">Requesting
+                Payeezy token...</div>
         </div>
         <div class="row">
             <form class="checkOut-form" role="form">
@@ -86,7 +90,7 @@
                         <div class="row">
                             <div class="col-md-8">
                                 <label>Street:</label>
-                                <input type="text" class="input-default" id="street1">
+                                <input type="text" class="input-default" id="street1"  payeezy-data="street">
                                 <br>
                                 <input type="text" class="input-default" id="street2">
                             </div>
@@ -96,11 +100,11 @@
                         <div class="row">
                             <div class="col-md-5">
                                 <label>City:</label>
-                                <input type="text" class="input-default" id="city">
+                                <input type="text" class="input-default" id="city"  payeezy-data="city">
                             </div>
                             <div class="col-md-3">
                                 <label>State:</label>
-                                <select class="form-control input-default" id="state" name="state">
+                                <select class="form-control input-default" id="state" name="state" payeezy-data="state_province">
                                     <option value="">State</option>
                                     <option value="AK">Alaska</option>
                                     <option value="AL">Alabama</option>
@@ -162,11 +166,11 @@
                         <div class="row">
                             <div class="col-md-3">
                                 <label>Zip:</label>
-                                <input type="text" class="input-default" id="zip">
+                                <input type="text" class="input-default" id="zip"  payeezy-data="zip_postal_code">
                             </div>
                             <div class="col-md-3">
                                 <label>Country:</label>
-                                <select class="form-control input-default" id="country" name="country">
+                                <select class="form-control input-default" id="country" name="country" payeezy-data="country">
                                     <option value="AF">Afghanistan</option>
                                     <option value="AX">Åland Islands</option>
                                     <option value="AL">Albania</option>
@@ -438,20 +442,27 @@
 
                         <div class="row">
                             <div class="col-md-5">
-                                <label>First Name:</label>
-                                <input type="text" class="input-default" id="firstName" required>
-                            </div>
-                            <div class="col-md-5">
-                                <label>Last Name:</label>
-                                <input type="text" class="input-default" id="lastName" required>
+                                <label>Cardholder Name:</label>
+                                <input type="text" class="input-default" id="firstName"  payeezy-data="cardholder_name" required>
                             </div>
                         </div>
                         <br>
 
                         <div class="row">
+                            <div class="col-md-5">
+                                <label>Card Type:</label>
+                            </div>
+                            <select payeezy-data="card_type">
+                                <option value="visa">Visa</option>
+                                <option value="mastercard">Master Card</option>
+                                <option value="American Express">American Express</option>
+                                <option value="discover">Discover</option>
+                            </select>
+                        </div>
+                        <div class="row">
                             <div class="col-md-7">
                                 <label>Card number:</label>
-                                <input type="text" class="input-default" id="cardNumber" required>
+                                <input type="text" class="input-default" id="cardNumber"  payeezy-data="cc_number" required>
                             </div>
                         </div>
                         <br>
@@ -462,7 +473,7 @@
                                     <label>Expiration date:</label>
                                 </div>
                                 <div class="col-xs-6">
-                                    <select class="form-control input-default" name='expireMM' id='expireMM'
+                                    <select class="form-control input-default" name='expireMM' id='expireMM'  payeezy-data="exp_month"
                                             required>
                                         <option value=''>Month</option>
                                         <option value='1'>Janaury</option>
@@ -480,7 +491,7 @@
                                     </select>
                                 </div>
                                 <div class="col-xs-6">
-                                    <select class="form-control input-default" name='expireYY' id='expireYY'
+                                    <select class="form-control input-default" name='expireYY' id='expireYY'  payeezy-data="exp_year"
                                             required>
                                         <option value=''>Year</option>
                                         <option value='16'>2016</option>
@@ -502,7 +513,7 @@
                                 <label>Security code <span class="note">(or 'CVC')</span></label>
 
                                 <div class="col-xs-6 col-md-5">
-                                    <input type="text" class="input-default" id="cvv" required>
+                                    <input type="text" class="input-default" id="cvv" payeezy-data="cvv_code"  required>
                                 </div>
                                 <div class="col-md-2">
                                     <img src="images/security-code.gif" alt="business credit report cvc help"
@@ -586,7 +597,8 @@
 	</div>
 
 
-</script>
+
+        </script>
 
     </div>
 </div>

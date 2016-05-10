@@ -20,7 +20,7 @@ public class ReportWsClientMock implements ReportWsClient {
     public USASearchResponse usaSearch(USASearchRequest request) {
         USASearchResponse response = new USASearchResponse();
         USASearchResponse2 usaSearchResult = new USASearchResponse2();
-        usaSearchResult.setSearchId("1");
+        usaSearchResult.setSearchId(String.valueOf(new Random().nextInt(10000)));
         usaSearchResult.setCompletionCode(CompletionCodeEnum.SUCCESS);
         USACompanyInfo comp = new USACompanyInfo();
         comp.setStreetAddress("Main st.");
@@ -70,15 +70,16 @@ public class ReportWsClientMock implements ReportWsClient {
         return response;
     }
 
-    public OrderReportResponse orderReport2(OrderReportRequest request) {
+    public OrderReportResponse orderReport(OrderReportRequest request) {
         OrderReportResponse response = new OrderReportResponse();
         OrderReportResponse2 response2 = new OrderReportResponse2();
+        response2.setCompletionCode(CompletionCodeEnum.SUCCESS);
         response2.setRequestId("200");
         response.setOrderReportResult(response2);
         return response;
     }
 
-    public OrderReportResponse orderReport(OrderReportRequest request) {
+    public OrderReportResponse orderReport2(OrderReportRequest request) {
         OrderReportResponse response = new OrderReportResponse();
         OrderReportResponse2 response2 = new OrderReportResponse2();
         if (request.getRequestId() != 0){

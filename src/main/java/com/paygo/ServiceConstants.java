@@ -12,6 +12,7 @@ public class ServiceConstants {
     public static final String NOT_FOUND_JSON_ERROR = "{\"error\": \"not found\"}\n";
     public static final String UNEXPECTED_JSON_ERROR = "{\"error\": \"Unexpected error\"}\n";
     public static final String UNAUTHORIZED_JSON_ERROR = "{\"error\": \"Session expired.Please relogin.\"}\n";
+    public static final String AUTHENTICATION_JSON_ERROR = "{\"error\": \"Authentication error.\"}\n";
     public static final String CANT_ADD_2_CART_JSON_ERROR = "{\"error\": \"Failed to add to cart\"}\n";
     public static final String VIEW_CART_FAIL_JSON_ERROR = "{\"error\": \"Failed to get cart\"}\n";
     public static final String USER_NOT_FOUND_JSON_ERROR = "{\"error\": \"User not found\"}\n";
@@ -23,5 +24,6 @@ public class ServiceConstants {
     public static final String JSON_SUCCESS = "{\"success\": \"true\"}\n";
     public static final String ACTION_LOGIN = "logIn";
     public static final String ACTION_SIGNUP = "signUp";
+    public static final String CARTS_NOT_EQUAL_JSON_ERROR = "{\"error\": \"Cart from DB is not equal website cart\"}\n";
 
 }

@@ -46,7 +46,7 @@ public class MySqlCartDaoTest {
         String ticker = null;
         String requestId = "22";
         List<ReportCartItem> reports = dao.getCartItemByTicker(requestId, ticker);
-        Assert.assertEquals(reports.size(),1);
+        Assert.assertEquals(reports.size(), 1);
     }
 
     @Test
@@ -64,7 +64,7 @@ public class MySqlCartDaoTest {
         tickerList.add(ticker2);
         int cartEntryId = 15;
         dao.saveTickers(tickerList, cartEntryId);
-        Assert.assertEquals(1,1);
+        Assert.assertEquals(1, 1);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class MySqlCartDaoTest {
         String requestId = "22";
         int cartEntryId = 15;
         int affected = dao.updateCart(requestId, cartEntryId);
-        Assert.assertEquals(1,affected);
+        Assert.assertEquals(1, affected);
     }
 
     @Test
@@ -126,5 +126,28 @@ public class MySqlCartDaoTest {
         report.setReportType(reportType);
         return report;
     }
+
+    @Test
+    public void testSaveTransaction() throws Exception {
+        User user = new User();
+        user.setUserId(34);
+        Transaction transaction = new Transaction();
+        transaction.setAmount(1222);
+        transaction.setBankMessage("test");
+        transaction.setBankResponseCode("TEST");
+        transaction.setCorrelationID("test");
+        transaction.setCurrency(Currency.USD);
+        transaction.setGatewayMessage("test");
+        transaction.setGatewayResponseCode("TEST");
+        transaction.setTransactionIdExternal("ddd");
+        transaction.setTransactionStatus("approved");
+        transaction.setTransactionTag("test");
+        transaction.setTransactionType("test");
+        transaction.setValidationStatus("test");
+        int affected = dao.saveTransaction(transaction, user);
+        Assert.assertTrue("Should be only one affected row", affected == 1);
+
+    }
+
 
 }

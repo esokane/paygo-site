@@ -11,8 +11,12 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
 	      type='text/css'>
+	<script src="https://apis.google.com/js/platform.js" defer></script>
 	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
-	<script type="text/javascript" src="../../../javascripts/paygo_scripts.js"></script>
+	<script type="text/javascript" src="javascripts/js.cookie.js"></script>
+	<script type="text/javascript" src="javascripts/paygo_account.js"></script>
+	<script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
+	<script type="text/javascript" src="javascripts/googleSignIn.js" defer></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -29,8 +33,24 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="" data-toggle="modal" data-target="#myModal">Login</a></li>
-					<li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse">Sign Up</a>
+					<li><a href="" data-toggle="modal" data-target="#myModal" id="loginButton">Login</a></li>
+					<li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse" id="signUpButton">Sign Up</a>
+					</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right" id = "dropdownBlock">
+					<li class="btn-group">
+						<a href="" class="dropdown-toggle user-name-nav" data-toggle="dropdown" aria-haspopup="true"
+						   aria-expanded="false"><i class="fa fa fa-user fa-lg"></i>&nbsp;
+							<span id="dropdownMenuUserEmail">empty</span>
+							<span class="caret"></span></a>
+						<ul class="dropdown-menu" id="dropdown-menu">
+							<li><a href="my-reports.html"><i class="fa fa-folder-open"></i>&nbsp; My Reports</a></li>
+							<li><a href="reviewOrder.html"><i class="fa fa-shopping-cart"></i>&nbsp; Cart</a></li>
+							<li><a href="account-settings.html"><i class="fa fa-cog"></i>&nbsp; Account Settings</a>
+							</li>
+							<li><a href="#" id="dropdownMenuUserLogOut" class="divide"><i
+									class="fa fa-sign-out"></i>&nbsp; Log Out</a></li>
+						</ul>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right navmain">
@@ -85,9 +105,9 @@
 					<h3 class="modal-title" id="myModalLabel">Login</h3>
 				</div>
 				<div class="modal-body">
-					<div class="btn-google"></div>
+					<div class="btn-google" id="btn-google"></div>
 					<div class="signup-choice">or</div>
-					<form class="logIn-form" role="form">
+					<form class="logIn-form" role="form" id="logIn-form">
 						<div class=" form-group">
 							<label for="login-email-modal">Email Address</label>
 							<input class="input-default" id="login-email-modal" type="email"
@@ -113,6 +133,66 @@
 						class="fa fa-lock"></i>&nbsp; Log In
 					</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal fade in" id="signUp" role="dialog" aria-labelledby="myModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">×</span>
+					</button>
+					<h3 class="modal-title" id="myModalLabel">Sign Up</h3>
+				</div>
+				<div class="modal-body">
+					<div class="btn-google" id="btn-google-sign"></div>
+					<div class="signup-choice">or</div>
+					<div id="registration-form-container">
+						<div class="registration-header">
+							<span><h4>Please complete the following required fields to complete registration.</h4></span>
+						</div>
+						<form id="registration-form" name="registration-form" method="post" action="">
+							<input type="hidden" name="registration-form" value="registration-form">
+							<input id="username-secret" type="hidden" name="username_secret">
+
+							<div class="register-input-field">
+								<label for="register-email-modal">Email Address*:</label>
+								<input class="input-default" id="register-email-modal" type="email"
+									   placeholder="name@domain.com" autocomplete="off">
+							</div>
+							<div class="register-input-field">
+								<label for="register-first-name-modal">First Name*:</label>
+								<input class="input-default" id="register-first-name-modal" type="text" name="first-name"
+									   placeholder="John">
+							</div>
+							<div class="register-input-field">
+								<label for="register-last-name-modal">Last Name*:</label>
+								<input class="input-default" id="register-last-name-modal" type="text" name="last_name"
+									   placeholder="Doe">
+							</div>
+							<div class="register-input-field">
+								<div class="register-input">
+									<label for="register-password-modal">Password*:</label>
+									<input class="input-default" id="register-password-modal" type="password"
+										   name="register-password" autocomplete="off" placeholder="Password">
+								</div>
+							</div>
+							<div class="register-input-field">
+								<div>
+									<label for="register-retype-password-modal">
+										Retype Password*:</label>
+									<input class="input-default" id="register-retype-password-modal" type="password"
+										   name="retype_password" autocomplete="off" placeholder="Retype Password">
+								</div>
+							</div>
+						</form>
+						<button class="btn btn-primary modal-login" name="registration-submit"
+								type="submit" id="register-submit-modal"><i class="fa fa-lock"></i>&nbsp; Register
+						</button>
+					</div>
+				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>

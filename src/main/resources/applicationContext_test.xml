@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
-       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:util="http://www.springframework.org/schema/util"
        xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
-        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd">
+
     <import resource="applicationContext_datasource.xml"/>
     <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
         <property name="locations" value="classpath:jdbc.properties"/>
+    </bean>
+
+    <bean id="paymentServiceBean" class="com.paygo.PaymentService">
+        <property name="restTemplate" ref="restTemplateBean"/>
+        <property name="paymentClient" ref="paymentClientBean"/>
+    </bean>
+
+    <bean id="reportServiceBean" class="com.paygo.ReportService">
+        <property name="reportWSClient" ref="reportServiceClient"/>
+        <property name="jsonUtils" ref="JSONUtils"/>
+        <property name="accountDao" ref="accountDaoBean"/>
+        <property name="reportDao" ref="reportDaoBean"/>
+        <property name="cartService" ref="cartServiceBean"/>
+        <property name="emailSender" ref="emailSenderBean"/>
+        <property name="paymentService" ref="paymentServiceBean"/>
     </bean>
 
     <bean id="emailSenderBean" class="com.paygo.email.EmailSender">
@@ -22,15 +39,6 @@
         <property name="mailBodyContenType" value="${mail.body.content.type}"/>
     </bean>
 
-    <bean id="reportServiceBean" class="com.paygo.ReportService">
-        <property name="reportWSClient" ref="reportServiceClient"/>
-        <property name="jsonUtils" ref="JSONUtils"/>
-        <property name="accountDao" ref="accountDaoBean"/>
-        <property name="reportDao" ref="reportDaoBean"/>
-        <property name="cartService" ref="cartServiceBean"/>
-        <property name="emailSender" ref="emailSenderBean"/>
-    </bean>
-
     <bean id="cartServiceBean" class="com.paygo.CartService">
         <property name="jsonUtils" ref="JSONUtils"/>
         <property name="reportDao" ref="reportDaoBean"/>
@@ -40,6 +48,7 @@
     <bean id="accountServiceBean" class="com.paygo.AccountService">
         <property name="jsonUtils" ref="JSONUtils"/>
         <property name="accountDao" ref="accountDaoBean"/>
+        <property name="googleClientID" value="${google.client.id}"/>
     </bean>
 
     <bean id="accountDaoBean" class="com.paygo.dao.mysql.MySqlAccountDao">
@@ -91,5 +100,32 @@
     <bean id="reportDaoBean" class="com.paygo.dao.mysql.MySqlReportDao">
         <constructor-arg ref="dataSource"/>
     </bean>
+
+    <bean id="restTemplate" class="org.springframework.web.client.RestTemplate">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.xml.SourceHttpMessageConverter"></bean>
+                <bean class="org.springframework.http.converter.FormHttpMessageConverter"/>
+            </list>
+
+        </property>
+        <!-- for authentication -->
+        <property name="requestFactory">
+            <bean class="org.springframework.http.client.HttpComponentsClientHttpRequestFactory">
+
+            </bean>
+        </property>
+
+    </bean>
+
+    <!-- CERT -->
+    <bean id="paymentClient" class="com.firstdata.firstapi.client.FirstAPIClientV2Helper">
+        <property name="url" value="https://api-cert.payeezy.com/v1"/>
+        <property name="appId" value="jjjjjjjj"/>
+        <property name="securedSecret" value="jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjja8"/>
+        <property name="token" value="fdoa-7f2c32d36deafb7343a75d0838a152437f2c32d36deafb73"/>
+        <property name="ta_token" value="NOIW"/>
+    </bean>
+
 
 </beans>

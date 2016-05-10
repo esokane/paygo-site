@@ -1,6 +1,11 @@
 package com.paygo;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdToken;
+import com.google.api.client.googleapis.auth.oauth2.GoogleIdTokenVerifier;
+import com.google.api.client.googleapis.auth.oauth2.GooglePublicKeysManager;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
 import com.paygo.dao.AccountDao;
 import com.paygo.dao.CryptUtils;
 import com.paygo.domain.Constants;
@@ -14,8 +19,10 @@ import com.paygo.utils.JSONUtils;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.security.GeneralSecurityException;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.Arrays;
 
 /**
  * class for operations with user account
@@ -25,6 +32,12 @@ public class AccountService {
 
     private JSONUtils jsonUtils;
     private AccountDao accountDao;
+    private String googleClientID;
+
+
+    public void setGoogleClientID(String googleClientID) {
+        this.googleClientID = googleClientID;
+    }
 
     public String authorize(HttpServletRequest request) {
         User user;
@@ -64,7 +77,7 @@ public class AccountService {
             }
         }
         session.setAttribute(Constants.SESSION_ATTRIBUTE_USER, requestUser);
-        String result = null;
+        String result;
         try {
             result = jsonUtils.processObject2Json(requestUser);
         } catch (JsonProcessingException e) {
@@ -94,7 +107,7 @@ public class AccountService {
     private String login(User user, HttpSession session) {
         logger.info("login([{}],[{}]) -> started", user, session);
         User userInfo = accountDao.getUserInfo(user);
-        if (userInfo == null){
+        if (userInfo == null) {
             logger.error("Failed to retrieve user from database [{}]", user);
             return ServiceConstants.USER_NOT_FOUND_JSON_ERROR;
         }
@@ -204,4 +217,60 @@ public class AccountService {
         logger.info("saveUser -> ended. result: [{}]", result);
         return result;
     }
+
+
+    public String googleSignIn(HttpServletRequest incomeRequest) throws IOException {
+        logger.info("googleSignIn([{}]) -> started", incomeRequest);
+        HttpSession session = incomeRequest.getSession();
+        User user = jsonUtils.processJSON2Object(incomeRequest.getInputStream(), User.class);
+        GoogleIdToken idToken = null;
+        try {
+            idToken = verifyGoogleToken(user.getIdToken());
+        } catch (GeneralSecurityException e) {
+            logger.error("Google Authorization failed", e);
+            return ServiceConstants.AUTHENTICATION_JSON_ERROR;
+        }
+        if (idToken != null) {
+            GoogleIdToken.Payload payload = idToken.getPayload();
+            // Get profile information from payload
+            user.setEmail(payload.getEmail());
+            User userInfo = accountDao.getUserInfo(user);
+            String result;
+            if (userInfo == null) {
+                user.setFirstName((String) payload.get("given_name"));
+                user.setLastName((String) payload.get("family_name"));
+                try {
+                    accountDao.createOrUpdateUser(user);
+                    userInfo = user;
+                } catch (Exception e) {
+                    logger.error("Failed to update user", e);
+                    return ServiceConstants.USER_INFO_SAVING_FAILED_JSON_ERROR;
+                }
+            }
+            session.setAttribute(Constants.SESSION_ATTRIBUTE_USER, userInfo);
+            try {
+                result = jsonUtils.processObject2Json(userInfo);
+            } catch (JsonProcessingException e) {
+                logger.error("Failed to process object to JSON [{}]", userInfo, e);
+                return ServiceConstants.USER_NOT_FOUND_JSON_ERROR;
+            }
+            logger.info("googleSignIn -> ended. result:[{}]", result);
+            return result;
+        } else {
+            logger.info("Google Authorization failed");
+            return ServiceConstants.AUTHENTICATION_JSON_ERROR;
+        }
+    }
+
+    private GoogleIdToken verifyGoogleToken(String token) throws GeneralSecurityException, IOException {
+        GooglePublicKeysManager publicKeys = new GooglePublicKeysManager.Builder(new NetHttpTransport()
+                , new JacksonFactory()).build();
+        GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(publicKeys)
+                .setAudience(Arrays.asList(googleClientID))
+                .setIssuer("accounts.google.com")
+                .build();
+        // (Receive idTokenString by HTTPS POST)
+        return verifier.verify(token);
+    }
+
 }

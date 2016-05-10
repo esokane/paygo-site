@@ -87,7 +87,7 @@ public class MySqlAccountDao extends NamedParameterJdbcDaoSupport implements Acc
         return userId;
     }
 
-    // get user info from db
+    // get user info from db by email
     public User getUserInfo(User user) {
         logger.debug("getUserInfo([{}]) -> started", user);
         List<User> users = getJdbcTemplate().query(GET_USER_SQL, new Object[]{user.getEmail()}, new UserMapper());

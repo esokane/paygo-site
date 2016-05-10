@@ -35,6 +35,7 @@ public class ReportHttpServletRequestHandler implements HttpRequestHandler {
     private static final String DELETE_USER = "/reportServlet/deleteUser";
     private static final String SAVE_USER = "/reportServlet/saveUser";
     private static final String SELECT_TICKER = "/reportServlet/selectTicker";
+    private static final String GOOGLE_SIGNING = "/reportServlet/googleSignIn";
 
 
     private ReportService reportService;
@@ -62,6 +63,10 @@ public class ReportHttpServletRequestHandler implements HttpRequestHandler {
                     }
                     case CREATE_ACCOUNT: {
                         result = authorize(request);
+                        break;
+                    }
+                    case GOOGLE_SIGNING: {
+                        result = googleSignIn(request);
                         break;
                     }
                     case ADD_2_CART: {
@@ -129,6 +134,10 @@ public class ReportHttpServletRequestHandler implements HttpRequestHandler {
         logger.info(request.getRequestURI() + " -> ended.");
     }
 
+    private String googleSignIn(HttpServletRequest request) throws IOException{
+        return accountService.googleSignIn(request);
+    }
+
     private boolean isSessionExpired(HttpServletRequest request) {
         User user = (User) request.getSession().getAttribute(Constants.SESSION_ATTRIBUTE_USER);
         if (request.getHeader("cookie").contains("userData")) {
@@ -143,7 +152,7 @@ public class ReportHttpServletRequestHandler implements HttpRequestHandler {
                     }
                 }
             }
-        }//JSESSIONID=EB08D9C1B22FDB637876B3A04125ADD8; userData=undefined
+        }
         return false;
     }
 

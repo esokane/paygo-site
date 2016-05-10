@@ -11,11 +11,13 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
 	      type='text/css'>
+	<script src="https://apis.google.com/js/platform.js" defer></script>
 	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="javascripts/js.cookie.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_account.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_500.js"></script>
+	<script type="text/javascript" src="javascripts/googleSignIn.js" defer></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -32,8 +34,8 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="" data-toggle="modal" data-target="#myModal"  id="loginButton">Login</a></li>
-					<li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse"  id="signUpButton">Sign Up</a>
+					<li><a href="" data-toggle="modal" data-target="#myModal" id="loginButton">Login</a></li>
+					<li><a href="" data-toggle="modal" data-target="#signUp" class="btn btn-primary-reverse" id="signUpButton">Sign Up</a>
 					</li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right" id = "dropdownBlock">
@@ -104,9 +106,9 @@
 					<h3 class="modal-title" id="myModalLabel">Login</h3>
 				</div>
 				<div class="modal-body">
-					<div class="btn-google"></div>
+					<div class="btn-google" id="btn-google"></div>
 					<div class="signup-choice">or</div>
-					<form class="logIn-form" role="form">
+					<form class="logIn-form" role="form" id="logIn-form">
 						<div class=" form-group">
 							<label for="login-email-modal">Email Address</label>
 							<input class="input-default" id="login-email-modal" type="email"
@@ -145,7 +147,7 @@
 					<h3 class="modal-title" id="myModalLabel">Sign Up</h3>
 				</div>
 				<div class="modal-body">
-					<div class="btn-google"></div>
+					<div class="btn-google" id="btn-google-sign"></div>
 					<div class="signup-choice">or</div>
 					<div id="registration-form-container">
 						<div class="registration-header">

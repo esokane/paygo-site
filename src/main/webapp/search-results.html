@@ -10,12 +10,14 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href='https://fonts.googleapis.com/css?family=PT+Serif:400,400italic,700|Raleway:400,300,700' rel='stylesheet'
 	      type='text/css'>
+	<script src="https://apis.google.com/js/platform.js" defer></script>
 	<link href="/stylesheets/styles.css" rel="stylesheet" type="text/css"/>
 	<script type="text/javascript" src="javascripts/paygo_account.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_scripts.js"></script>
 	<script type="text/javascript" src="javascripts/js.cookie.js"></script>
 	<script type="text/javascript" src="javascripts/paygo_search-results.js"></script>
 	<script type="text/javascript" src="javascripts/jsrender.min.js"></script>
+	<script type="text/javascript" src="javascripts/googleSignIn.js" defer></script>
 </head>
 <body data-spy="scroll" data-target="#navbar">
 	<nav class="navbar navbar-inverse navbar-fixed-top">
@@ -232,9 +234,9 @@
 							<h3 class="modal-title" id="myModalLabelLogIn">Login</h3>
 						</div>
 						<div class="modal-body">
-							<div class="btn-google"></div>
+							<div class="btn-google" id="btn-google"></div>
 							<div class="signup-choice">or</div>
-							<form class="logIn-form" role="form">
+							<form class="logIn-form" role="form" id="logIn-form">
 								<div class=" form-group">
 									<label for="login-email-modal">Email Address</label>
 									<input class="input-default" id="login-email-modal" type="email"
@@ -278,14 +280,14 @@
 						<div class="modal-body">
 							<div class="row">
 								<div class="col-md-12">
-									<div class="btn-google"></div>
+									<div class="btn-google" id="btn-google-login"></div>
 								</div>
 							</div>
 							<div class="row">
 								<div class="signup-choice">or</div>
 							</div>
 							<div class="row">
-								<form class="logIn-form" role="form">
+								<form class="logIn-form" id="logIn-form_order" role="form" method="POST" onsubmit="submit_handler">
 									<div class="col-md-12 form-group">
 										<div class="row row-modal">
 											<div class="col-md-12"><label for="login-email-modal"><h4>Please enter your
@@ -335,7 +337,7 @@
 													<div class="col-sm-12">
 														<input class="input-default" id="login-password-order"
 														       type="password" placeholder="Password"
-														       autocomplete="off">
+														       autocomplete="off" type="submit">
 
 														<div class="col-sm-10">
 															<p class="footnote forgot-password">
@@ -346,8 +348,8 @@
 														</div>
 													</div>
 													<div class="col-sm-12">
-														<a class="btn btn-primary modal-login" type="submit"
-														   id="login-submit-order">&nbsp; Log In</a>
+														<a class="btn btn-primary modal-login"
+														   id="login-submit-order" type="button">&nbsp; Log In</a>
 													</div>
 												</div>
 											</div>
@@ -399,7 +401,7 @@
 					</div>
 				</div>
 			</div>
-			<!-- Sign Up -->
+			 <!--Sign Up -->
 			<div class="modal fade in" id="signUp" role="dialog" aria-labelledby="myModalLabelSignUp">
 				<div class="modal-dialog" role="document">
 					<div class="modal-content">
@@ -410,7 +412,7 @@
 							<h3 class="modal-title" id="myModalLabelSignUp">Sign Up</h3>
 						</div>
 						<div class="modal-body">
-							<div class="btn-google"></div>
+							<div class="btn-google" id="btn-google-sign"></div>
 							<div class="signup-choice">or</div>
 							<div id="registration-form-container">
 								<div class="registration-header">
@@ -453,7 +455,7 @@
 										</div>
 									</div>
 								</form>
-								<button class="btn btn-primary modal-login" name="registration-submit" type="submit"
+								<button class="btn btn-primary modal-login" name="registration-submit" type="button"
 								        id="register-submit-modal"><i class="fa fa-lock"></i>&nbsp; Register
 								</button>
 							</div>

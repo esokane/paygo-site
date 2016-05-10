@@ -107,11 +107,7 @@ public class MySqlReportDao extends NamedParameterJdbcDaoSupport implements Repo
         int userId = user.getUserId();
         List<Report> reports = getNamedParameterJdbcTemplate().query(GET_REPORT_BY_USER_SQL, Collections.singletonMap("user_id", userId), new ReportMapper());
         logger.debug("getUserReports [{}]) -> ended", reports);
-        if (!reports.isEmpty()) {
             return reports;
-        } else {
-            return null;
-        }
     }
 
 }
